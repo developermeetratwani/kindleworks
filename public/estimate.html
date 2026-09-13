@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KindleWorks — Get an Estimate</title>
+  <meta name="description" content="Get a custom estimate for your web design or digital project from KindleWorks." />
+
+  <!-- Google Fonts — Quantico -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Estimate Page Specific Styles */
+    .estimate-page {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .estimate-hero {
+      position: relative;
+      background: var(--kw-bg);
+      padding: clamp(80px,12vw,120px) clamp(20px,9vw,118px);
+      text-align: center;
+      overflow: hidden;
+    }
+    .estimate-hero__heading {
+      font-size: clamp(34px, 7vw, 60px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      line-height: 0.98;
+      color: var(--kw-heading);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .estimate-hero__heading .accent {
+      color: var(--kw-accent);
+    }
+    .estimate-form-section {
+      flex: 1;
+      padding: clamp(60px,10vw,100px) clamp(20px,9vw,118px);
+      background: var(--kw-bg);
+      display: flex;
+      justify-content: center;
+    }
+    .estimate-box {
+      background: var(--kw-white);
+      width: 100%;
+      max-width: 600px;
+      padding: 40px;
+      border: 1px solid rgba(0,0,0,0.06);
+      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    .form-step {
+      display: none;
+      animation: formFade 0.4s ease-out forwards;
+    }
+    .form-step.is-active {
+      display: block;
+    }
+    @keyframes formFade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .form-question {
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 700;
+      color: var(--kw-heading);
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+    .form-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .form-option {
+      padding: 16px 20px;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 16px;
+      background: transparent;
+      color: var(--kw-body);
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .form-option:hover {
+      border-color: var(--kw-accent);
+      background: rgba(232, 93, 38, 0.05);
+    }
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 32px;
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.2);
+      color: var(--kw-body);
+      padding: 12px 24px;
+      font-family: 'Quantico', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      background: rgba(0,0,0,0.05);
+    }
+    .form-input {
+      width: 100%;
+      padding: 16px 20px;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 16px;
+      margin-bottom: 16px;
+      background: transparent;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--kw-accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="nav" id="main-nav" style="background: var(--kw-bg);">
+    <a href="/" class="nav__logo" aria-label="KindleWorks Home">
+      <div class="nav__logo-circle">
+        <img src="logo.png" alt="KindleWorks" />
+      </div>
+    </a>
+    <div class="nav__links" id="nav-links">
+      <a href="/" class="nav__link">Home</a>
+      <a href="/#about" class="nav__link">About</a>
+      <a href="/#work" class="nav__link">Work</a>
+      <a href="/#features" class="nav__link">Features</a>
+      <a href="/#pricing" class="nav__link">Pricing</a>
+    </div>
+    <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav__mobile-menu" id="nav-mobile-menu">
+      <a href="/">Home</a>
+      <a href="/#about">About</a>
+      <a href="/#work">Work</a>
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+    </div>
+  </nav>
+
+  <div class="estimate-page">
+    <div class="estimate-hero">
+      <h1 class="estimate-hero__heading reveal">
+        Let's build <br><span class="accent">your vision</span>
+      </h1>
+    </div>
+
+    <div class="estimate-form-section">
+      <div class="estimate-box">
+        <!-- Step 1 -->
+        <div class="form-step is-active" id="step-1">
+          <h2 class="form-question">What type of project are you looking to build?</h2>
+          <div class="form-options">
+            <button class="form-option" onclick="nextStep(2, 'Project: Corporate Website')">Corporate Website</button>
+            <button class="form-option" onclick="nextStep(2, 'Project: E-Commerce Store')">E-Commerce Store</button>
+            <button class="form-option" onclick="nextStep(2, 'Project: Portfolio / Personal')">Portfolio / Personal Site</button>
+            <button class="form-option" onclick="nextStep(2, 'Project: Web App / SaaS')">Web App / SaaS</button>
+            <button class="form-option" onclick="nextStep(2, 'Project: Other')">Other</button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="form-step" id="step-2">
+          <h2 class="form-question">What is your estimated timeline?</h2>
+          <div class="form-options">
+            <button class="form-option" onclick="nextStep(3, 'Timeline: ASAP')">As soon as possible</button>
+            <button class="form-option" onclick="nextStep(3, 'Timeline: 1-2 Months')">1-2 Months</button>
+            <button class="form-option" onclick="nextStep(3, 'Timeline: 3+ Months')">3+ Months</button>
+            <button class="form-option" onclick="nextStep(3, 'Timeline: Flexible')">Flexible</button>
+          </div>
+          <div class="form-actions">
+            <button class="btn-secondary" onclick="prevStep(1)">Back</button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="form-step" id="step-3">
+          <h2 class="form-question">What is your estimated budget?</h2>
+          <div class="form-options">
+            <button class="form-option" onclick="nextStep(4, 'Budget: < ₹10k')">Under &#8377;10,000</button>
+            <button class="form-option" onclick="nextStep(4, 'Budget: ₹10k - ₹20k')">&#8377;10,000 - &#8377;20,000</button>
+            <button class="form-option" onclick="nextStep(4, 'Budget: ₹20k+')">Above &#8377;20,000</button>
+            <button class="form-option" onclick="nextStep(4, 'Budget: Not Sure')">Not Sure</button>
+          </div>
+          <div class="form-actions">
+            <button class="btn-secondary" onclick="prevStep(2)">Back</button>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="form-step" id="step-4">
+          <h2 class="form-question">Where should we send your estimate?</h2>
+          <input type="text" class="form-input" placeholder="Your Name" id="name" />
+          <input type="email" class="form-input" placeholder="Your Email Address" id="email" />
+          <div class="form-actions">
+            <button class="btn-secondary" onclick="prevStep(3)">Back</button>
+            <button class="btn-chamfer" onclick="submitForm()">Get Estimate</button>
+          </div>
+        </div>
+
+        <!-- Step 5 (Success) -->
+        <div class="form-step" id="step-5" style="text-align: center; padding: 20px 0;">
+          <h2 class="form-question">Request Received!</h2>
+          <p style="color: var(--kw-body); margin-bottom: 24px;">We'll review your requirements and get back to you with a custom estimate shortly.</p>
+          <a href="/" class="btn-chamfer" style="justify-content: center;">Back to Home</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let formData = [];
+
+    function nextStep(step, data) {
+      if (data) formData.push(data);
+      document.querySelectorAll('.form-step').forEach(el => el.classList.remove('is-active'));
+      document.getElementById('step-' + step).classList.add('is-active');
+    }
+
+    function prevStep(step) {
+      formData.pop();
+      document.querySelectorAll('.form-step').forEach(el => el.classList.remove('is-active'));
+      document.getElementById('step-' + step).classList.add('is-active');
+    }
+
+    function submitForm() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      if (!name || !email) return alert('Please enter your name and email.');
+      formData.push(`Name: ${name}`);
+      formData.push(`Email: ${email}`);
+      console.log('Estimate Request:', formData);
+      // In a real app, send formData to the server here.
+      document.querySelectorAll('.form-step').forEach(el => el.classList.remove('is-active'));
+      document.getElementById('step-5').classList.add('is-active');
+    }
+
+    // Hamburger menu logic
+    var hamburger = document.getElementById('nav-hamburger');
+    var mobileMenu = document.getElementById('nav-mobile-menu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', function() {
+        var expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', String(!expanded));
+        hamburger.classList.toggle('is-active');
+        mobileMenu.classList.toggle('is-open');
+      });
+    }
+  </script>
+</body>
+</html>

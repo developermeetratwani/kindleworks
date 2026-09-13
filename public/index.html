@@ -6,669 +6,574 @@
   <title>KindleWorks — Crafting Digital Experiences That Define Businesses</title>
   <meta name="description" content="KindleWorks crafts premium digital experiences that define businesses. We build stunning websites, apps, and digital products." />
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts — Quantico -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
   <!-- ═══════════════════════════════════════════════════ -->
-  <!--  NAVIGATION                                         -->
+  <!--  SECTION 1 — HERO                                  -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <nav id="main-nav" class="nav">
-    <div class="nav__accent-line" aria-hidden="true"></div>
-    <div class="nav__inner">
+  <section class="hero" id="home">
+
+    <!-- Background Video -->
+    <video class="hero__video" id="hero-video" autoplay muted loop playsinline preload="auto"
+      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260823_050407_500d0339-ab28-41c1-9688-132a74a3b5aa.mp4">
+    </video>
+
+    <!-- Left scrim (desktop only) -->
+    <div class="hero__scrim" aria-hidden="true"></div>
+
+    <!-- Navbar -->
+    <nav class="nav" id="main-nav">
       <a href="/" class="nav__logo" aria-label="KindleWorks Home">
-        <img src="logo.png" alt="KindleWorks" class="nav__logo-img" />
+        <div class="nav__logo-circle">
+          <img src="logo.png" alt="KindleWorks" />
+        </div>
       </a>
 
-      <ul class="nav__links" id="nav-links">
-        <li><a href="#features" class="nav__link">Features</a></li>
-        <li><a href="#pricing" class="nav__link">Pricing</a></li>
-      </ul>
-
-      <div class="nav__right">
-        <a href="#contact" class="nav__cta" id="nav-cta">Start a Project</a>
+      <div class="nav__links" id="nav-links">
+        <a href="#home" class="nav__link">Home</a>
+        <a href="#about" class="nav__link">About</a>
+        <a href="#work" class="nav__link">Work</a>
+        <a href="#features" class="nav__link">Features</a>
+        <a href="#pricing" class="nav__link">Pricing</a>
+        <a href="/estimate.html" class="nav__link nav__link--accent">Get Estimate</a>
       </div>
 
-      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <div class="nav__cta-wrap">
+        <a href="/estimate.html" class="nav__contact-btn">
+          <svg width="17" height="13" viewBox="0 0 17 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="1" width="15" height="11" rx="1.5"/>
+            <polyline points="1 1 8.5 7.5 16 1"/>
+          </svg>
+          Get Estimate
+        </a>
+      </div>
+
+      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
       </button>
-    </div>
-  </nav>
 
-  <!-- ═══════════════════════════════════════════════════ -->
-  <!--  HERO SECTION                                       -->
-  <!-- ═══════════════════════════════════════════════════ -->
-  <section id="hero" class="hero">
+      <div class="nav__mobile-menu" id="nav-mobile-menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="/estimate.html">Get Estimate</a>
+      </div>
+    </nav>
 
-    <!-- Shader background -->
-    <div class="hero__shader" aria-hidden="true">
-      <canvas id="shader-canvas" style="display:block;width:100%;height:100%"></canvas>
-    </div>
-
-    <!-- Dark overlay for text readability -->
-    <div class="hero__overlay" aria-hidden="true"></div>
-
-    <!-- Content -->
+    <!-- Hero Content -->
     <div class="hero__content">
-      <p class="hero__tagline">
-        <span class="hero__tagline-dot"></span>
-        Digital Innovation Agency
+      <div class="hero__headline">
+        <h1>
+          <span class="stair-line" style="transition-delay: 0.1s">Crafting</span>
+          <span class="stair-line" style="transition-delay: 0.2s">Digital</span>
+          <span class="stair-line" style="transition-delay: 0.3s">Experience</span>
+          <span class="stair-line indent" style="transition-delay: 0.45s">That</span>
+          <span class="stair-line indent" style="transition-delay: 0.55s">Define</span>
+          <span class="stair-line indent accent" style="transition-delay: 0.65s">Businesses</span>
+        </h1>
+      </div>
+
+      <div class="hero__cta-wrap">
+        <a href="/estimate.html" class="btn-chamfer">Get Your Estimate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  SECTION 2 — ABOUT                                 -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="about" id="about">
+    <div class="about__left">
+      <h2 class="about__heading reveal">
+        <span>About</span>
+        <span class="indent">KindleWorks</span>
+      </h2>
+      <p class="about__text reveal" style="transition-delay: 0.15s">
+        KindleWorks crafts the digital infrastructure modern businesses rely on. From custom websites to full-scale digital products, we make sure your online presence is pixel-perfect and performance-driven. Custom-built. Transparent pricing. Yours from day one.
       </p>
-
-      <h1 class="hero__title">
-        <span class="hero__title-line">Crafting Digital</span>
-        <span class="hero__title-line hero__title-line--accent">Experience</span>
-        <span class="hero__title-line">That Define</span>
-        <span class="hero__title-line hero__title-line--accent">Businesses</span>
-      </h1>
-
-      <p class="hero__description">
-        We build world-class digital products that transform brands and accelerate growth.
-        From concept to launch — pixel-perfect, performance-driven, endlessly creative.
-      </p>
-
-      <div class="hero__actions">
-        <a href="#contact" class="btn btn--primary" id="hero-cta-primary">
-          Start a Project
-          <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a href="#work" class="btn btn--ghost" id="hero-cta-secondary">
-          View Our Work
-        </a>
+      <div class="about__cta reveal" style="transition-delay: 0.3s">
+        <a href="#features" class="btn-chamfer">Learn More</a>
       </div>
     </div>
-
-    <!-- Scroll indicator — separate from content to avoid overlap -->
-    <div class="hero__scroll" aria-hidden="true">
-      <div class="hero__scroll-line"></div>
-      <span class="hero__scroll-text">Scroll</span>
-    </div>
-  </section>
-  <!-- ═══════════════════════════════════════════════════ -->
-  <!--  TRUST / VALUE PROPOSITION (SECTION 01)             -->
-  <!-- ═══════════════════════════════════════════════════ -->
-  <section id="trust" class="trust reveal-card">
-    <div class="trust__container">
-      <h2 class="trust__heading">Your Business Deserves More Than Just a Website.</h2>
-      <p class="trust__text">We build websites designed to make your business look professional, build customer trust, and give you complete control over your online presence.</p>
-      <div class="trust__divider" aria-hidden="true"></div>
-      <p class="trust__subline">Custom-built. Transparent pricing. Yours from day one.</p>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════ -->
-  <!--  PORTFOLIO / OUR WORK (SECTION 02)                  -->
-  <!-- ═══════════════════════════════════════════════════ -->
-  <section id="work" class="work">
-    <div class="work__container">
-      
-      <div class="work__header reveal-card">
-        <p class="work__label">[ OUR WORK ]</p>
-        <h2 class="work__heading">Built to Make an Impression.</h2>
-        <p class="work__subheading">Every website we build is designed around the business behind it—not pulled from a template.</p>
-      </div>
-
-      <div class="work__grid">
-        
-        <!-- Project 1 -->
-        <article class="work-card reveal-card">
-          <div class="work-card__img-wrap">
-            <img src="portfolio-1.png" alt="KindleWorks E-Commerce Project" class="work-card__img">
-            <div class="work-card__overlay">
-              <a href="#" class="btn btn--primary work-card__btn">View Website &rarr;</a>
-            </div>
-          </div>
-          <div class="work-card__content">
-            <h3 class="work-card__title">Aura: Luxury E-Commerce</h3>
-            <p class="work-card__desc">A high-performance digital storefront designed to elevate brand perception and streamline the checkout experience.</p>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="work-card reveal-card">
-          <div class="work-card__img-wrap">
-            <img src="portfolio-2.png" alt="KindleWorks SaaS Project" class="work-card__img">
-            <div class="work-card__overlay">
-              <a href="#" class="btn btn--primary work-card__btn">View Website &rarr;</a>
-            </div>
-          </div>
-          <div class="work-card__content">
-            <h3 class="work-card__title">Nexus: Corporate SaaS Platform</h3>
-            <p class="work-card__desc">A clean, scalable marketing site built to demonstrate complex software features with stunning clarity.</p>
-          </div>
-        </article>
-
+    <div class="about__right">
+      <div class="about__video-wrap">
+        <video class="about__video" id="about-video" autoplay muted loop playsinline preload="auto"
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260823_063501_2e2c8971-de1e-473a-8611-a0c9ae7ee186.mp4">
+        </video>
+        <div class="about__video-overlay" aria-hidden="true"></div>
       </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════ -->
-  <!--  WHY YOUR BUSINESS NEEDS A WEBSITE (SECTION 03)     -->
+  <!--  SECTION 3 — PORTFOLIO                             -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section id="why-website" class="why">
-    <div class="why__container">
-      
-      <div class="why__header reveal-card">
-        <h2 class="why__heading">Your Business Is Already Online.<br><span class="why__heading--accent">Is It Being Represented Properly?</span></h2>
-        <p class="why__subheading">Your website is often the first place a potential customer goes after discovering your business.</p>
-      </div>
+  <section class="portfolio" id="work">
+    <p class="portfolio__label reveal">Our Work</p>
+    <h2 class="portfolio__heading reveal" style="transition-delay: 0.1s">
+      <span>Built to</span>
+      <span class="indent">Impress</span>
+    </h2>
 
-      <div class="why__grid">
-        
-        <!-- Card 1 -->
-        <article class="why-card reveal-card">
-          <div class="why-card__icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3 class="why-card__title">01 &mdash; Build Trust</h3>
-          <p class="why-card__desc">A professional website gives customers a reliable place to learn about your business.</p>
-        </article>
+    <div class="portfolio__grid">
+      <article class="project-card reveal" style="transition-delay: 0.15s">
+        <img src="portfolio-1.png" alt="Aura: Luxury E-Commerce" class="project-card__img" />
+        <div class="project-card__content">
+          <h3 class="project-card__title">Aura: Luxury E-Commerce</h3>
+          <p class="project-card__desc">A high-performance digital storefront designed to elevate brand perception and streamline the checkout experience.</p>
+          <a href="#" class="project-card__link">View Project</a>
+        </div>
+      </article>
 
-        <!-- Card 2 -->
-        <article class="why-card reveal-card">
-          <div class="why-card__icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <h3 class="why-card__title">02 &mdash; Be Available 24/7</h3>
-          <p class="why-card__desc">Your customers can find your services, information, and contact details whenever they need them.</p>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="why-card reveal-card">
-          <div class="why-card__icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
-          </div>
-          <h3 class="why-card__title">03 &mdash; Turn Visitors Into Customers</h3>
-          <p class="why-card__desc">Give potential customers a clear path from discovering your business to contacting you.</p>
-        </article>
-
-        <!-- Card 4 -->
-        <article class="why-card reveal-card">
-          <div class="why-card__icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          </div>
-          <h3 class="why-card__title">04 &mdash; Own Your Presence</h3>
-          <p class="why-card__desc">Unlike social media platforms, your website is an online presence you actually control.</p>
-        </article>
-
-      </div>
+      <article class="project-card reveal" style="transition-delay: 0.25s">
+        <img src="portfolio-2.png" alt="Nexus: Corporate SaaS Platform" class="project-card__img" />
+        <div class="project-card__content">
+          <h3 class="project-card__title">Nexus: Corporate SaaS</h3>
+          <p class="project-card__desc">A clean, scalable marketing site built to demonstrate complex software features with stunning clarity.</p>
+          <a href="#" class="project-card__link">View Project</a>
+        </div>
+      </article>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════ -->
-  <!--  FEATURES / WHY CHOOSE KINDLEWORKS                  -->
+  <!--  SECTION 4 — FEATURES (with shader background)     -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section id="features" class="features">
-    <div class="features__container">
-
-      <p class="features__label">[ WHY CHOOSE US ]</p>
-      <h2 class="features__heading">Why Choose KindleWorks?</h2>
+  <section class="features" id="features">
+    <canvas class="shader-bg shader-bg--light" id="features-shader" aria-hidden="true"></canvas>
+    <div class="features__inner">
+      <p class="features__label reveal">Why Choose Us</p>
+      <h2 class="features__heading reveal" style="transition-delay: 0.1s">
+        <span>Why Choose</span>
+        <span class="indent">KindleWorks</span>
+      </h2>
 
       <div class="features__grid">
-
-        <!-- Card 1 — Pricing Transparency -->
-        <article class="fcard" id="feature-pricing">
-          <div class="fcard__hover-gradient"></div>
-          <div class="fcard__inner-glow"></div>
-          <div class="fcard__corner fcard__corner--tl"></div>
-          <div class="fcard__corner fcard__corner--tr"></div>
-          <div class="fcard__corner fcard__corner--bl"></div>
-          <div class="fcard__corner fcard__corner--br"></div>
-          <div class="fcard__header">
-            <div class="fcard__icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-              </svg>
-            </div>
-            <div class="fcard__title-wrap">
-              <h3 class="fcard__title">Absolute Pricing Transparency</h3>
-            </div>
+        <article class="feat-card">
+          <div class="feat-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
           </div>
-          <p class="fcard__desc">Every cost is outlined upfront with complete clarity. No hidden fees, no surprise invoices, no ambiguity — just honest, straightforward pricing.</p>
+          <h3 class="feat-card__title">Pricing Transparency</h3>
+          <p class="feat-card__desc">Every cost is outlined upfront with complete clarity. No hidden fees, no surprise invoices, no ambiguity.</p>
         </article>
-
-        <!-- Card 2 — Full Ownership -->
-        <article class="fcard" id="feature-ownership">
-          <div class="fcard__hover-gradient"></div>
-          <div class="fcard__inner-glow"></div>
-          <div class="fcard__corner fcard__corner--tl"></div>
-          <div class="fcard__corner fcard__corner--tr"></div>
-          <div class="fcard__corner fcard__corner--bl"></div>
-          <div class="fcard__corner fcard__corner--br"></div>
-          <div class="fcard__header">
-            <div class="fcard__icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m21 2-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/>
-              </svg>
-            </div>
-            <div class="fcard__title-wrap">
-              <h3 class="fcard__title">Complete Ownership, Always</h3>
-            </div>
+        <article class="feat-card">
+          <div class="feat-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m21 2-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+            </svg>
           </div>
-          <p class="fcard__desc">Upon delivery, every line of code, every design asset, and every digital element belongs entirely to you — no strings attached, no licensing constraints.</p>
+          <h3 class="feat-card__title">Complete Ownership</h3>
+          <p class="feat-card__desc">Upon delivery, every line of code, every design asset, and every digital element belongs entirely to you.</p>
         </article>
-
-        <!-- Card 3 — Hosted on Your Account -->
-        <article class="fcard" id="feature-hosting">
-          <div class="fcard__hover-gradient"></div>
-          <div class="fcard__inner-glow"></div>
-          <div class="fcard__corner fcard__corner--tl"></div>
-          <div class="fcard__corner fcard__corner--tr"></div>
-          <div class="fcard__corner fcard__corner--bl"></div>
-          <div class="fcard__corner fcard__corner--br"></div>
-          <div class="fcard__header">
-            <div class="fcard__icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/>
-              </svg>
-            </div>
-            <div class="fcard__title-wrap">
-              <h3 class="fcard__title">Hosted on Your Infrastructure</h3>
-            </div>
+        <article class="feat-card">
+          <div class="feat-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/>
+            </svg>
           </div>
-          <p class="fcard__desc">Your website is deployed directly to your hosting account, ensuring full administrative control without vendor lock-in or dependency on third parties.</p>
+          <h3 class="feat-card__title">Your Infrastructure</h3>
+          <p class="feat-card__desc">Your website is deployed directly to your hosting account, ensuring full control without vendor lock-in.</p>
         </article>
-
-        <!-- Card 4 — Built for You -->
-        <article class="fcard" id="feature-custom">
-          <div class="fcard__hover-gradient"></div>
-          <div class="fcard__inner-glow"></div>
-          <div class="fcard__corner fcard__corner--tl"></div>
-          <div class="fcard__corner fcard__corner--tr"></div>
-          <div class="fcard__corner fcard__corner--bl"></div>
-          <div class="fcard__corner fcard__corner--br"></div>
-          <div class="fcard__header">
-            <div class="fcard__icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/><path d="M14.5 17.5 4.5 15"/>
-              </svg>
-            </div>
-            <div class="fcard__title-wrap">
-              <h3 class="fcard__title">Bespoke by Design</h3>
-            </div>
+        <article class="feat-card">
+          <div class="feat-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/><path d="M14.5 17.5 4.5 15"/>
+            </svg>
           </div>
-          <p class="fcard__desc">Every element is meticulously crafted around your brand identity, business objectives, and target audience — never templated, always one-of-a-kind.</p>
+          <h3 class="feat-card__title">Bespoke by Design</h3>
+          <p class="feat-card__desc">Every element is crafted around your brand identity and business objectives — never templated, always unique.</p>
         </article>
-
-        <!-- Card 5 — No Commission -->
-        <article class="fcard" id="feature-commission">
-          <div class="fcard__hover-gradient"></div>
-          <div class="fcard__inner-glow"></div>
-          <div class="fcard__corner fcard__corner--tl"></div>
-          <div class="fcard__corner fcard__corner--tr"></div>
-          <div class="fcard__corner fcard__corner--bl"></div>
-          <div class="fcard__corner fcard__corner--br"></div>
-          <div class="fcard__header">
-            <div class="fcard__icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>
-              </svg>
-            </div>
-            <div class="fcard__title-wrap">
-              <h3 class="fcard__title">Zero Commissions. Zero Surprises.</h3>
-            </div>
+        <article class="feat-card">
+          <div class="feat-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>
+            </svg>
           </div>
-          <p class="fcard__desc">We earn from our craft, not your revenue. No commissions on your sales, no percentage cuts, no unexpected charges — ever. What you see is what you pay.</p>
+          <h3 class="feat-card__title">Zero Commissions</h3>
+          <p class="feat-card__desc">We earn from our craft, not your revenue. No commissions on your sales, no percentage cuts — ever.</p>
         </article>
-
-        <!-- Card 6 — Free Updates -->
-        <article class="fcard" id="feature-updates">
-          <div class="fcard__hover-gradient"></div>
-          <div class="fcard__inner-glow"></div>
-          <div class="fcard__corner fcard__corner--tl"></div>
-          <div class="fcard__corner fcard__corner--tr"></div>
-          <div class="fcard__corner fcard__corner--bl"></div>
-          <div class="fcard__corner fcard__corner--br"></div>
-          <div class="fcard__header">
-            <div class="fcard__icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>
-              </svg>
-            </div>
-            <div class="fcard__title-wrap">
-              <h3 class="fcard__title">40 Complimentary Updates in Year One</h3>
-              <span class="fcard__badge">Included</span>
-            </div>
+        <article class="feat-card">
+          <div class="feat-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>
+            </svg>
           </div>
-          <p class="fcard__desc">Need post-launch refinements? Receive up to 40 updates at no additional cost during your first year — ensuring your website evolves alongside your business.</p>
+          <h3 class="feat-card__title">40 Free Updates</h3>
+          <p class="feat-card__desc">Receive up to 40 updates at no additional cost during your first year — your website evolves with your business.</p>
         </article>
-
       </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════ -->
-  <!--  PRICING SECTION                                    -->
+  <!--  SECTION 5 — PRICING                               -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section id="pricing" class="pricing">
-    <div class="pricing__container">
+  <section class="pricing" id="pricing">
+    <p class="pricing__label reveal">Pricing</p>
+    <h2 class="pricing__heading reveal" style="transition-delay: 0.1s">
+      <span>Transparent</span>
+      <span class="indent">Pricing</span>
+    </h2>
+    <p class="pricing__sub reveal" style="transition-delay: 0.2s">
+      Choose a package that fits your business. No hidden charges. No commissions. Complete ownership after delivery.
+    </p>
 
-      <p class="pricing__label">[ PRICING ]</p>
-      <h2 class="pricing__heading">Simple. Transparent. Flexible Pricing.</h2>
-      <p class="pricing__subheading">
-        Choose a package that fits your business, or get a completely customised website built around your requirements.
-        <br>No hidden charges. No commissions. Complete ownership after delivery.
+    <div class="pricing__grid">
+      <div class="price-card reveal" style="transition-delay: 0.15s">
+        <div class="price-card__name">Basic</div>
+        <div class="price-card__price">&#8377;7,500</div>
+        <div class="price-card__price-range">to &#8377;8,500</div>
+        <p class="price-card__suited">Best suited for small businesses, portfolios &amp; local services.</p>
+        <ul class="price-card__features">
+          <li>Minimal &amp; professional website</li>
+          <li>Essential pages included</li>
+          <li>Fully responsive design</li>
+          <li>Light development effort</li>
+          <li>Basic deployment guidance</li>
+        </ul>
+        <a href="/estimate.html" class="btn-chamfer price-card__btn">Get Estimate</a>
+      </div>
+
+      <div class="price-card price-card--featured reveal" style="transition-delay: 0.25s">
+        <div class="price-card__badge">Recommended</div>
+        <div class="price-card__name">Business</div>
+        <div class="price-card__price">&#8377;9,000</div>
+        <div class="price-card__price-range">to &#8377;14,000</div>
+        <p class="price-card__suited">Ideal for growing businesses &amp; professional service providers.</p>
+        <ul class="price-card__features">
+          <li>Custom UI/UX design</li>
+          <li>Light to medium animations</li>
+          <li>Refined, polished design</li>
+          <li>Fully responsive website</li>
+          <li>Enhanced user experience</li>
+          <li>Medium development effort</li>
+        </ul>
+        <a href="/estimate.html" class="btn-chamfer price-card__btn">Get Estimate</a>
+      </div>
+
+      <div class="price-card reveal" style="transition-delay: 0.35s">
+        <div class="price-card__name">Premium</div>
+        <div class="price-card__price">&#8377;17,000</div>
+        <div class="price-card__price-range">to &#8377;20,000</div>
+        <p class="price-card__suited">Perfect for brands seeking a premium digital presence.</p>
+        <ul class="price-card__features">
+          <li>Premium custom design</li>
+          <li>Rich, advanced UI/UX</li>
+          <li>Advanced animations</li>
+          <li>Rich visual experience</li>
+          <li>Higher development effort</li>
+          <li>Premium visual experience</li>
+        </ul>
+        <a href="/estimate.html" class="btn-chamfer price-card__btn">Get Estimate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  SECTION 6 — CONTACT CTA (with Lightfall shader)   -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="contact-cta" id="contact">
+    <canvas class="shader-bg" id="contact-shader" aria-hidden="true"></canvas>
+    <div class="contact-cta__inner">
+      <h2 class="contact-cta__heading reveal">
+        Ready to<br><span class="accent">Start Building?</span>
+      </h2>
+      <p class="contact-cta__text reveal" style="transition-delay: 0.15s">
+        Every business is unique. Tell us what you need and we'll craft a custom plan specifically for you.
       </p>
-
-      <div class="pricing__grid">
-
-        <!-- ─── Basic ─── -->
-        <div class="pcard" id="pricing-basic">
-          <div class="pcard__top">
-            <div class="pcard__icon-row">
-              <!-- Layers icon -->
-              <svg class="pcard__plan-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
-              </svg>
-              <span class="pcard__plan-name">Basic</span>
-            </div>
-            <div class="pcard__price-row">
-              <span class="pcard__price">₹7,500</span>
-              <span class="pcard__price-sep">–</span>
-              <span class="pcard__price">₹8,500</span>
-            </div>
-            <a href="#contact" class="pcard__btn">Get Started</a>
-          </div>
-
-          <div class="pcard__body">
-            <p class="pcard__suited">Best suited for small businesses, portfolios &amp; local services.</p>
-            <ul class="pcard__features">
-              <li>Minimal &amp; professional website</li>
-              <li>Essential pages included</li>
-              <li>Fully responsive design</li>
-              <li>Light development effort</li>
-              <li>Basic deployment guidance</li>
-            </ul>
-            <div class="pcard__extras">
-              <span>Hosting: from ₹70/mo</span>
-              <span>Domain: based on your choice</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─── Business (Recommended) ─── -->
-        <div class="pcard pcard--featured" id="pricing-business">
-          <div class="pcard__badge-wrap">
-            <span class="pcard__recommended">Recommended</span>
-          </div>
-          <div class="pcard__top">
-            <div class="pcard__icon-row">
-              <!-- Building icon -->
-              <svg class="pcard__plan-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/>
-              </svg>
-              <span class="pcard__plan-name">Business</span>
-            </div>
-            <div class="pcard__price-row">
-              <span class="pcard__price">₹9,000</span>
-              <span class="pcard__price-sep">–</span>
-              <span class="pcard__price">₹14,000</span>
-            </div>
-            <a href="#contact" class="pcard__btn pcard__btn--accent">Get Started</a>
-          </div>
-
-          <div class="pcard__body">
-            <p class="pcard__suited">Ideal for growing businesses &amp; professional service providers.</p>
-            <ul class="pcard__features">
-              <li>Custom UI/UX design</li>
-              <li>Light to medium animations</li>
-              <li>Refined, polished design</li>
-              <li>Fully responsive website</li>
-              <li>Enhanced user experience</li>
-              <li>Medium development effort</li>
-            </ul>
-            <div class="pcard__extras">
-              <span>Hosting: from ₹150/mo</span>
-              <span>Domain: based on your choice</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─── Premium ─── -->
-        <div class="pcard" id="pricing-premium">
-          <div class="pcard__top">
-            <div class="pcard__icon-row">
-              <!-- Crown icon -->
-              <svg class="pcard__plan-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5.21 16.5h13.58"/>
-              </svg>
-              <span class="pcard__plan-name">Premium</span>
-            </div>
-            <div class="pcard__price-row">
-              <span class="pcard__price">₹17,000</span>
-              <span class="pcard__price-sep">–</span>
-              <span class="pcard__price">₹20,000</span>
-            </div>
-            <a href="#contact" class="pcard__btn">Get Started</a>
-          </div>
-
-          <div class="pcard__body">
-            <p class="pcard__suited">Perfect for brands seeking a premium digital presence.</p>
-            <ul class="pcard__features">
-              <li>Premium custom design</li>
-              <li>Rich, advanced UI/UX</li>
-              <li>Advanced animations &amp; interactions</li>
-              <li>Rich visual experience</li>
-              <li>Higher development effort</li>
-              <li>Premium visual experience</li>
-            </ul>
-            <div class="pcard__extras">
-              <span>Hosting: from ₹250/mo</span>
-              <span>Domain: based on your choice</span>
-            </div>
-          </div>
-        </div>
-
+      <div class="reveal" style="transition-delay: 0.3s">
+        <a href="/estimate.html" class="btn-chamfer">Get Free Estimate</a>
       </div>
-
-      <!-- Custom Pricing CTA -->
-      <div class="pricing__custom" id="pricing-custom">
-        <div class="pricing__custom-glow" aria-hidden="true"></div>
-        <h3 class="pricing__custom-heading">Need Something Different?</h3>
-        <p class="pricing__custom-text">
-          Every business is unique. If none of these packages align with your requirements, we'll craft a custom plan specifically for you.
-        </p>
-        <a href="/pricing" class="btn btn--primary pricing__custom-btn" id="pricing-custom-cta">
-          View Complete &amp; Custom Pricing
-          <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-      </div>
-
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════ -->
-  <!--  SHADER SCRIPT                                      -->
+  <!--  FOOTER                                            -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <span class="footer__copy">&copy; 2026 KindleWorks. All rights reserved.</span>
+    <div class="footer__links">
+      <a href="/estimate.html">Estimate</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#features">Features</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  LIGHTFALL SHADER (Vanilla WebGL Port)             -->
   <!-- ═══════════════════════════════════════════════════ -->
   <script>
-  (function () {
-    const canvas = document.getElementById('shader-canvas');
-    if (!canvas) return;
+  (function() {
+    var vertSrc = [
+      'attribute vec2 position;',
+      'varying vec2 vUv;',
+      'void main() {',
+      '  vUv = position * 0.5 + 0.5;',
+      '  gl_Position = vec4(position, 0.0, 1.0);',
+      '}'
+    ].join('\n');
 
-    function syncSize() {
-      const w = canvas.clientWidth  || 1280;
-      const h = canvas.clientHeight || 720;
-      if (canvas.width !== w || canvas.height !== h) {
-        canvas.width  = w;
-        canvas.height = h;
+    var fragSrc = [
+      'precision highp float;',
+      'uniform vec2 uRes;',
+      'uniform float uTime;',
+      'uniform vec2 uMouse;',
+      'uniform vec3 uCol1;',
+      'uniform vec3 uCol2;',
+      'uniform vec3 uBg;',
+      'uniform float uOpacity;',
+      'uniform float uLight;',
+      'varying vec2 vUv;',
+      '',
+      'vec3 palette(float h){',
+      '  return mix(uCol1,uCol2,smoothstep(0.3,0.7,h));',
+      '}',
+      '',
+      'vec3 tanhv(vec3 x){',
+      '  vec3 e=exp(-2.0*x);',
+      '  return (1.0-e)/(1.0+e);',
+      '}',
+      '',
+      'vec2 sceneC(vec2 frag,vec2 r){',
+      '  vec2 P=(frag+frag-r)/r.x;',
+      '  float z=0.0,d=1e3;',
+      '  vec4 O=vec4(0.0);',
+      '  for(int k=0;k<39;k++){',
+      '    if(d<=1e-4)break;',
+      '    O=z*normalize(vec4(P,2.0,0.0))-vec4(0.0,4.0,1.0,0.0)/4.5;',
+      '    d=1.0-sqrt(length(O*O));',
+      '    z+=d;',
+      '  }',
+      '  return vec2(O.x,atan(O.z,O.y));',
+      '}',
+      '',
+      'void main(){',
+      '  vec2 r=uRes;',
+      '  vec2 C_frag=vUv*r;',
+      '  vec2 uv0=(C_frag+C_frag-r)/r.x;',
+      '  float T=0.1*uTime*0.5+9.0;',
+      '  float angRings=max(1.0,floor(6.28318*0.6+0.5));',
+      '  vec2 Y=vec2(5e-3,6.28318/angRings);',
+      '',
+      '  vec2 c0=sceneC(C_frag,r);',
+      '  vec2 cdx=sceneC(C_frag+vec2(1.0,0.0),r);',
+      '  vec2 cdy=sceneC(C_frag+vec2(0.0,1.0),r);',
+      '  vec2 dCx=cdx-c0; vec2 dCy=cdy-c0;',
+      '  dCx.y-=6.28318*floor(dCx.y/6.28318+0.5);',
+      '  dCy.y-=6.28318*floor(dCy.y/6.28318+0.5);',
+      '  vec2 fw=abs(dCx)+abs(dCy);',
+      '  vec2 CC=c0;',
+      '',
+      '  vec2 P=2.0*uv0-vec2(0.0,r.y/r.x);',
+      '  vec4 O=uLight>0.5?vec4(0.0):vec4(uBg*90.0*0.5/(1e3*dot(P,P)+6.0),0.0);',
+      '',
+      '  float mGlow=0.0;',
+      '  vec2 mN=(uMouse+uMouse-r)/r.x;',
+      '  float md=length(uv0-mN);',
+      '  mGlow=exp(-md*md/1.0)*0.5;',
+      '  O.rgb+=uCol1*mGlow*0.25;',
+      '',
+      '  float zr=5e-4;',
+      '  vec2 rr=vec2(max(length(fw),1e-5));',
+      '  float tail=19.0;',
+      '',
+      '  for(int m=0;m<8;m++){',
+      '    float jf=float(m)+1.0;',
+      '    float ic=fract(sin(dot(vec2(jf,floor(CC.x/Y.x+0.5)),vec2(7.0,11.0))*73.0));',
+      '    vec2 Pp=CC-(T+T*ic)*vec2(0.0,1.0);',
+      '    Pp-=floor(Pp/Y+0.5)*Y;',
+      '    float h=fract(8663.0*ic);',
+      '    vec3 col=palette(h);',
+      '    float weight=mix(1.5,1.0+sin(T+7.0*h+4.0),1.0);',
+      '    weight*=(1.0+mGlow*2.0);',
+      '    vec2 inner=vec2(length(max(Pp,vec2(-1.0,0.0))),length(Pp)-zr)-zr;',
+      '    vec2 sm=vec2(1.0)-smoothstep(-rr,rr,inner);',
+      '    O.rgb+=dot(sm,vec2(exp(tail*Pp.y),3.0))*col*weight;',
+      '    CC.x+=Y.x/8.0;',
+      '  }',
+      '',
+      '  vec3 colr=sqrt(tanhv(max(O.rgb*1.0-vec3(0.04,0.08,0.02),0.0)));',
+      '  if(uLight>0.5){',
+      '    float peak=max(colr.r,max(colr.g,colr.b));',
+      '    float cov=smoothstep(0.035,0.58,peak)*uOpacity;',
+      '    vec3 chr=clamp(colr/max(peak,1e-4),0.0,1.0);',
+      '    chr=pow(chr,vec3(1.35));',
+      '    float cp=max(chr.r,max(chr.g,chr.b));',
+      '    chr/=max(cp,1e-4);',
+      '    gl_FragColor=vec4(mix(vec3(1.0),chr,cov*0.94),1.0);',
+      '  }else{',
+      '    gl_FragColor=vec4(colr,uOpacity);',
+      '  }',
+      '}'
+    ].join('\n');
+
+    function initShader(canvasId, col1, col2, bg, opacity, isLight) {
+      var canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      var gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: false }) || canvas.getContext('experimental-webgl', { alpha: true });
+      if (!gl) return;
+
+      function compile(type, src) {
+        var s = gl.createShader(type);
+        gl.shaderSource(s, src);
+        gl.compileShader(s);
+        return s;
       }
-    }
-    if (typeof ResizeObserver !== 'undefined') {
-      new ResizeObserver(syncSize).observe(canvas);
-    }
-    syncSize();
+      var prog = gl.createProgram();
+      gl.attachShader(prog, compile(gl.VERTEX_SHADER, vertSrc));
+      gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, fragSrc));
+      gl.linkProgram(prog);
+      gl.useProgram(prog);
 
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-    if (!gl) return;
+      var buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+      var pos = gl.getAttribLocation(prog, 'position');
+      gl.enableVertexAttribArray(pos);
+      gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
 
-    const vs = `attribute vec2 a_position;
-varying vec2 v_texCoord;
-void main() {
-  v_texCoord = a_position * 0.5 + 0.5;
-  gl_Position = vec4(a_position, 0.0, 1.0);
-}`;
+      var uRes = gl.getUniformLocation(prog, 'uRes');
+      var uTime = gl.getUniformLocation(prog, 'uTime');
+      var uMouse = gl.getUniformLocation(prog, 'uMouse');
+      var uCol1L = gl.getUniformLocation(prog, 'uCol1');
+      var uCol2L = gl.getUniformLocation(prog, 'uCol2');
+      var uBgL = gl.getUniformLocation(prog, 'uBg');
+      var uOpL = gl.getUniformLocation(prog, 'uOpacity');
+      var uLightL = gl.getUniformLocation(prog, 'uLight');
 
-    const fs = `precision highp float;
-uniform vec2 u_resolution;
-uniform float u_time;
-uniform vec2 u_mouse;
-
-float random (in float x) {
-    return fract(sin(x)*1e4);
-}
-float random (vec2 st) {
-    return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
-}
-
-void main(void) {
-    vec2 uv = (gl_FragCoord.xy * 2.0 - u_resolution.xy) / min(u_resolution.x, u_resolution.y);
-
-    vec2 fMosaicScal = vec2(4.0, 2.0);
-    vec2 vScreenSize = vec2(256.0, 256.0);
-    uv.x = floor(uv.x * vScreenSize.x / fMosaicScal.x) / (vScreenSize.x / fMosaicScal.x);
-    uv.y = floor(uv.y * vScreenSize.y / fMosaicScal.y) / (vScreenSize.y / fMosaicScal.y);
-
-    float t = u_time * 0.08 + random(uv.x) * 0.4;
-    float lineWidth = 0.0009;
-    vec3 color = vec3(0.0);
-
-    for(int j = 0; j < 3; j++){
-      for(int i = 1; i < 6; i++){
-        float fi = float(i);
-        float fj = float(j);
-        float wave = abs(fract(t - 0.015 * fj + fi * 0.012) * 1.0 - length(uv));
-        color[j] += lineWidth * (fi * fi) / max(wave, 0.001);
+      function hex(h) {
+        h = h.replace('#','');
+        return [parseInt(h.slice(0,2),16)/255, parseInt(h.slice(2,4),16)/255, parseInt(h.slice(4,6),16)/255];
       }
-    }
+      var c1 = hex(col1), c2 = hex(col2), bgc = hex(bg);
+      gl.uniform3f(uCol1L, c1[0], c1[1], c1[2]);
+      gl.uniform3f(uCol2L, c2[0], c2[1], c2[2]);
+      gl.uniform3f(uBgL, bgc[0], bgc[1], bgc[2]);
+      gl.uniform1f(uOpL, opacity);
+      gl.uniform1f(uLightL, isLight ? 1 : 0);
 
-    // Warm flame / KindleWorks amber glow tint
-    vec3 kindleColor = vec3(color[2] * 1.2 + color[0] * 0.4, color[1] * 0.65 + color[2] * 0.1, color[0] * 0.25);
+      var mouse = [0, 0];
+      canvas.addEventListener('pointermove', function(e) {
+        var rect = canvas.getBoundingClientRect();
+        mouse[0] = (e.clientX - rect.left) * (canvas.width / rect.width);
+        mouse[1] = (rect.height - (e.clientY - rect.top)) * (canvas.height / rect.height);
+      });
 
-    gl_FragColor = vec4(kindleColor, 1.0);
-}`;
-
-    function cs(type, src) {
-      const s = gl.createShader(type);
-      gl.shaderSource(s, src);
-      gl.compileShader(s);
-      return s;
-    }
-
-    const prog = gl.createProgram();
-    gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
-    gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
-    gl.linkProgram(prog);
-    gl.useProgram(prog);
-
-    const buf = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
-
-    const pos = gl.getAttribLocation(prog, 'a_position');
-    gl.enableVertexAttribArray(pos);
-    gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
-
-    const uTime  = gl.getUniformLocation(prog, 'u_time');
-    const uRes   = gl.getUniformLocation(prog, 'u_resolution');
-    const uMouse = gl.getUniformLocation(prog, 'u_mouse');
-
-    let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
-    window.addEventListener('mousemove', (event) => {
-      const rect = canvas.getBoundingClientRect();
-      if (rect.width && rect.height) {
-        const nx = (event.clientX - rect.left) / rect.width;
-        const ny = 1.0 - (event.clientY - rect.top) / rect.height;
-        mouse.x = nx * canvas.width;
-        mouse.y = ny * canvas.height;
+      function resize() {
+        var rect = canvas.parentElement.getBoundingClientRect();
+        var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
       }
-    });
+      resize();
+      window.addEventListener('resize', resize);
 
-    function render(t) {
-      if (typeof ResizeObserver === 'undefined') syncSize();
-      gl.viewport(0, 0, canvas.width, canvas.height);
-      if (uTime)  gl.uniform1f(uTime, t * 0.001);
-      if (uRes)   gl.uniform2f(uRes, canvas.width, canvas.height);
-      if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-      requestAnimationFrame(render);
+      var visible = false;
+      var obs = new IntersectionObserver(function(entries) {
+        visible = entries[0].isIntersecting;
+      }, { threshold: 0 });
+      obs.observe(canvas);
+
+      (function loop(t) {
+        requestAnimationFrame(loop);
+        if (!visible) return;
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.uniform2f(uRes, canvas.width, canvas.height);
+        gl.uniform1f(uTime, t * 0.001);
+        gl.uniform2f(uMouse, mouse[0], mouse[1]);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      })(0);
     }
-    render(0);
+
+    // Contact section — dark with amber streaks
+    initShader('contact-shader', '#e85d26', '#F97316', '#000000', 1.0, false);
+    // Features section — light mode, subtle amber tint
+    initShader('features-shader', '#e85d26', '#F97316', '#e85d26', 0.6, true);
   })();
   </script>
 
   <!-- ═══════════════════════════════════════════════════ -->
-  <!--  NAV + ANIMATIONS SCRIPT                            -->
+  <!--  MAIN SCRIPTS                                      -->
   <!-- ═══════════════════════════════════════════════════ -->
   <script>
   (function () {
-    /* ── Mobile hamburger toggle ── */
-    const hamburger = document.getElementById('nav-hamburger');
-    const navLinks  = document.getElementById('nav-links');
+    /* ── Video autoplay retry ── */
+    function ensurePlay(video) {
+      if (!video) return;
+      function tryPlay() { video.muted = true; video.play().catch(function(){}); }
+      tryPlay();
+      var retryInterval = setInterval(function() {
+        if (!video.paused) { clearInterval(retryInterval); return; }
+        tryPlay();
+      }, 1000);
+      document.addEventListener('click', tryPlay, { once: true });
+      document.addEventListener('touchstart', tryPlay, { once: true });
+    }
+    ensurePlay(document.getElementById('hero-video'));
+    ensurePlay(document.getElementById('about-video'));
 
-    if (hamburger && navLinks) {
-      hamburger.addEventListener('click', () => {
-        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+    /* ── Hamburger ── */
+    var hamburger = document.getElementById('nav-hamburger');
+    var mobileMenu = document.getElementById('nav-mobile-menu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', function() {
+        var expanded = hamburger.getAttribute('aria-expanded') === 'true';
         hamburger.setAttribute('aria-expanded', String(!expanded));
         hamburger.classList.toggle('is-active');
-        navLinks.classList.toggle('is-open');
+        mobileMenu.classList.toggle('is-open');
       });
     }
 
-    /* ── Nav background on scroll ── */
-    const nav = document.getElementById('main-nav');
-    if (nav) {
-      window.addEventListener('scroll', () => {
-        nav.classList.toggle('nav--scrolled', window.scrollY > 60);
-      }, { passive: true });
-    }
-
-    /* ── Staggered entry animations ── */
-    const animateEls = document.querySelectorAll('.hero__tagline, .hero__title-line, .hero__description, .hero__actions');
-    animateEls.forEach((el, i) => {
-      el.style.animationDelay = `${0.3 + i * 0.12}s`;
-    });
-
-    /* ── Scroll-triggered reveals for sections ── */
+    /* ── Scroll reveals ── */
     if ('IntersectionObserver' in window) {
-      const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            revealObserver.unobserve(entry.target);
+            observer.unobserve(entry.target);
           }
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-      // Feature cards
-      document.querySelectorAll('.fcard').forEach(card => revealObserver.observe(card));
-      // Pricing cards
-      document.querySelectorAll('.pcard').forEach(card => revealObserver.observe(card));
-      // Custom CTA
-      const customCta = document.querySelector('.pricing__custom');
-      if (customCta) revealObserver.observe(customCta);
-      
-      // General reveal cards (Trust section, etc)
-      document.querySelectorAll('.reveal-card').forEach(el => revealObserver.observe(el));
+      document.querySelectorAll('.reveal, .stair-line, .feat-card').forEach(function(el) {
+        observer.observe(el);
+      });
     } else {
-      document.querySelectorAll('.fcard, .pcard, .pricing__custom, .reveal-card').forEach(el => el.classList.add('is-visible'));
+      document.querySelectorAll('.reveal, .stair-line, .feat-card').forEach(function(el) {
+        el.classList.add('is-visible');
+      });
     }
+
+    /* ── Smooth scroll ── */
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+          if (mobileMenu && mobileMenu.classList.contains('is-open')) {
+            hamburger.classList.remove('is-active');
+            mobileMenu.classList.remove('is-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+    });
   })();
-  </script>  <!-- Smooth Scroll (Lenis) -->
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
-  <script>
-    const lenis = new Lenis()
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-    requestAnimationFrame(raf)
   </script>
+
 </body>
 </html>

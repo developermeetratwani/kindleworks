@@ -1,18 +1,21 @@
 {
   "name": "kindleworks",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "KindleWorks — Crafting Digital Experiences That Define Businesses",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "npm run build --prefix client",
+    "dev:client": "npm run dev --prefix client",
+    "install:all": "npm install && npm install --prefix client"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/KAVYAANPRO/kindleworks.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Meet Ratwani",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
@@ -20,6 +23,10 @@
   },
   "homepage": "https://github.com/KAVYAANPRO/kindleworks#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.2.1",
+    "mongoose": "^8.15.0"
   }
 }

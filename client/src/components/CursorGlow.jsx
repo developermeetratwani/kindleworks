@@ -50,7 +50,6 @@ export default function CursorGlow() {
     let curY = -500
     let isVisible = false
     let opacity = 0
-    let lastPointTime = 0
     let lastAddedX = -500
     let lastAddedY = -500
 
@@ -62,14 +61,13 @@ export default function CursorGlow() {
       const now = performance.now()
       const dist = Math.hypot(mouseX - lastAddedX, mouseY - lastAddedY)
 
-      // Add a trail point when moved enough or after a short interval
-      if (dist > 6 || (now - lastPointTime > 60 && dist > 2)) {
+      // Sample points smoothly when mouse moves at least 4px
+      if (dist >= 4) {
         trail.push({
           x: mouseX,
           y: mouseY,
           time: now,
         })
-        lastPointTime = now
         lastAddedX = mouseX
         lastAddedY = mouseY
       }
@@ -96,76 +94,128 @@ export default function CursorGlow() {
       // Clear previous frame
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
 
-      // Smooth position lerp
-      curX += (mouseX - curX) * 0.3
-      curY += (mouseY - curY) * 0.3
+      // Smooth position lerp for active cursor glow
+      curX += (mouseX - curX) * 0.35
+      curY += (mouseY - curY) * 0.35
 
       // Smooth visibility fade
       const targetOpacity = isVisible ? 1 : 0
       opacity += (targetOpacity - opacity) * 0.1
 
-      // ── 1. Draw Trail (Fades out smoothly over 3 seconds) ──────────
-      // Remove points older than TRAIL_LIFETIME
+      // ── 1. Clean Up Old Trail Points (> 3 seconds) ─────────────────
       while (trail.length > 0 && now - trail[0].time > TRAIL_LIFETIME) {
         trail.shift()
       }
 
-      if (trail.length > 1) {
-        // Draw connecting smooth ribbon
-        for (let i = 0; i < trail.length - 1; i++) {
-          const p1 = trail[i]
-          const p2 = trail[i + 1]
-          const age = now - p1.time
-          const life = Math.max(0, 1 - age / TRAIL_LIFETIME) // 1 -> 0 over 3s
-          const easeFade = life * life // quadratic decay
-
-          if (easeFade <= 0.001) continue
-
-          const lineWidth = 4 + easeFade * 14 // Soft ribbon width
-          const lineAlpha = easeFade * 0.12 // Light orange tint
-
-          ctx.beginPath()
-          ctx.moveTo(p1.x, p1.y)
-          ctx.lineTo(p2.x, p2.y)
-          ctx.strokeStyle = `rgba(${ACCENT_COLOR}, ${lineAlpha})`
-          ctx.lineWidth = lineWidth
-          ctx.lineCap = 'round'
-          ctx.lineJoin = 'round'
-          ctx.stroke()
-        }
-
-        // Draw soft dispersing glow nodes along trail
-        for (let i = 0; i < trail.length; i += 2) {
-          const p = trail[i]
-          const age = now - p.time
-          const life = Math.max(0, 1 - age / TRAIL_LIFETIME)
-          const easeFade = life * life
-
-          if (easeFade <= 0.001) continue
-
-          const radius = 12 + (1 - life) * 18 // Expands slightly as it dissipates
-          const glowAlpha = easeFade * 0.08
-
-          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius)
-          grad.addColorStop(0, `rgba(${ACCENT_COLOR}, ${glowAlpha})`)
-          grad.addColorStop(0.6, `rgba(${ACCENT_COLOR}, ${glowAlpha * 0.35})`)
-          grad.addColorStop(1, `rgba(${ACCENT_COLOR}, 0)`)
-
-          ctx.fillStyle = grad
-          ctx.beginPath()
-          ctx.arc(p.x, p.y, radius, 0, Math.PI * 2)
-          ctx.fill()
-        }
+      // Build points array including current live cursor point if visible
+      const points = [...trail]
+      if (isVisible && curX > 0 && curY > 0) {
+        points.push({ x: curX, y: curY, time: now })
       }
 
-      // ── 2. Draw Active Mouse Glow ──────────────────────────────────
+      // ── 2. Draw Smooth Continuous Curve Ribbon (No Circles/Glitches) ──
+      const len = points.length
+      if (len >= 2) {
+        // Draw in two passes for a soft glowing aura along the curve:
+        // Pass 1: Soft wide ambient aura
+        // Pass 2: Defined smooth core line
+
+        const drawCurve = (isAura = false) => {
+          ctx.lineCap = 'round'
+          ctx.lineJoin = 'round'
+
+          // Handle 2 points (straight segment)
+          if (len === 2) {
+            const age = now - points[0].time
+            const life = Math.max(0, 1 - age / TRAIL_LIFETIME)
+            const alpha = Math.pow(life, 1.4) * (isAura ? 0.08 : 0.2)
+            const width = isAura ? (8 + life * 16) : (2.5 + life * 6)
+
+            ctx.beginPath()
+            ctx.moveTo(points[0].x, points[0].y)
+            ctx.lineTo(points[1].x, points[1].y)
+            ctx.strokeStyle = `rgba(${ACCENT_COLOR}, ${alpha})`
+            ctx.lineWidth = width
+            ctx.stroke()
+            return
+          }
+
+          // Handle 3+ points with Midpoint Quadratic Bezier Splines
+          // First segment
+          const mid0_x = (points[0].x + points[1].x) / 2
+          const mid0_y = (points[0].y + points[1].y) / 2
+          const age0 = now - points[0].time
+          const life0 = Math.max(0, 1 - age0 / TRAIL_LIFETIME)
+          const alpha0 = Math.pow(life0, 1.4) * (isAura ? 0.08 : 0.2)
+          const width0 = isAura ? (8 + life0 * 16) : (2.5 + life0 * 6)
+
+          if (alpha0 > 0.002) {
+            ctx.beginPath()
+            ctx.moveTo(points[0].x, points[0].y)
+            ctx.lineTo(mid0_x, mid0_y)
+            ctx.strokeStyle = `rgba(${ACCENT_COLOR}, ${alpha0})`
+            ctx.lineWidth = width0
+            ctx.stroke()
+          }
+
+          // Middle quadratic curved segments
+          for (let i = 1; i < len - 1; i++) {
+            const pPrev = points[i - 1]
+            const pCur = points[i]
+            const pNext = points[i + 1]
+
+            const prevMidX = (pPrev.x + pCur.x) / 2
+            const prevMidY = (pPrev.y + pCur.y) / 2
+            const nextMidX = (pCur.x + pNext.x) / 2
+            const nextMidY = (pCur.y + pNext.y) / 2
+
+            const age = now - pCur.time
+            const life = Math.max(0, 1 - age / TRAIL_LIFETIME) // 1 -> 0 over 3s
+            const alpha = Math.pow(life, 1.4) * (isAura ? 0.08 : 0.2)
+            const width = isAura ? (8 + life * 16) : (2.5 + life * 6)
+
+            if (alpha <= 0.002) continue
+
+            ctx.beginPath()
+            ctx.moveTo(prevMidX, prevMidY)
+            ctx.quadraticCurveTo(pCur.x, pCur.y, nextMidX, nextMidY)
+            ctx.strokeStyle = `rgba(${ACCENT_COLOR}, ${alpha})`
+            ctx.lineWidth = width
+            ctx.stroke()
+          }
+
+          // Last segment to live cursor
+          const lastMidX = (points[len - 2].x + points[len - 1].x) / 2
+          const lastMidY = (points[len - 2].y + points[len - 1].y) / 2
+          const ageLast = now - points[len - 1].time
+          const lifeLast = Math.max(0, 1 - ageLast / TRAIL_LIFETIME)
+          const alphaLast = Math.pow(lifeLast, 1.4) * (isAura ? 0.08 : 0.2)
+          const widthLast = isAura ? (8 + lifeLast * 16) : (2.5 + lifeLast * 6)
+
+          if (alphaLast > 0.002) {
+            ctx.beginPath()
+            ctx.moveTo(lastMidX, lastMidY)
+            ctx.lineTo(points[len - 1].x, points[len - 1].y)
+            ctx.strokeStyle = `rgba(${ACCENT_COLOR}, ${alphaLast})`
+            ctx.lineWidth = widthLast
+            ctx.stroke()
+          }
+        }
+
+        // Pass 1: Soft wide glow
+        drawCurve(true)
+        // Pass 2: Clean smooth core curve
+        drawCurve(false)
+      }
+
+      // ── 3. Draw Active Mouse Glow ──────────────────────────────────
       if (opacity > 0.01 && curX > -200 && curY > -200) {
-        // Broad ambient orange glow (~160px radius)
-        const ambientRadius = 160
+        // Broad ambient orange glow (~150px radius)
+        const ambientRadius = 150
         const ambientGrad = ctx.createRadialGradient(curX, curY, 0, curX, curY, ambientRadius)
-        ambientGrad.addColorStop(0, `rgba(${ACCENT_COLOR}, ${0.16 * opacity})`)
-        ambientGrad.addColorStop(0.35, `rgba(${ACCENT_COLOR}, ${0.07 * opacity})`)
-        ambientGrad.addColorStop(0.7, `rgba(${ACCENT_COLOR}, ${0.02 * opacity})`)
+        ambientGrad.addColorStop(0, `rgba(${ACCENT_COLOR}, ${0.15 * opacity})`)
+        ambientGrad.addColorStop(0.35, `rgba(${ACCENT_COLOR}, ${0.06 * opacity})`)
+        ambientGrad.addColorStop(0.7, `rgba(${ACCENT_COLOR}, ${0.015 * opacity})`)
         ambientGrad.addColorStop(1, `rgba(${ACCENT_COLOR}, 0)`)
 
         ctx.fillStyle = ambientGrad
@@ -173,11 +223,11 @@ export default function CursorGlow() {
         ctx.arc(curX, curY, ambientRadius, 0, Math.PI * 2)
         ctx.fill()
 
-        // Inner focused aura (~45px radius)
-        const innerRadius = 45
+        // Inner focused aura (~40px radius)
+        const innerRadius = 40
         const innerGrad = ctx.createRadialGradient(curX, curY, 0, curX, curY, innerRadius)
-        innerGrad.addColorStop(0, `rgba(${ACCENT_COLOR}, ${0.25 * opacity})`)
-        innerGrad.addColorStop(0.6, `rgba(${ACCENT_COLOR}, ${0.08 * opacity})`)
+        innerGrad.addColorStop(0, `rgba(${ACCENT_COLOR}, ${0.22 * opacity})`)
+        innerGrad.addColorStop(0.6, `rgba(${ACCENT_COLOR}, ${0.06 * opacity})`)
         innerGrad.addColorStop(1, `rgba(${ACCENT_COLOR}, 0)`)
 
         ctx.fillStyle = innerGrad

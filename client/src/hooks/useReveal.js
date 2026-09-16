@@ -4,7 +4,10 @@ import { useEffect } from 'react'
  * useReveal — attaches IntersectionObserver to add 'is-visible' class
  * when elements with the given selector scroll into view.
  */
-export function useReveal(selector = '.reveal, .stair-line, .feat-card', deps = []) {
+export function useReveal(
+  selector = '.reveal, .stair-line, .feat-card, .hero-morph-left, .hero-morph-right',
+  deps = []
+) {
   useEffect(() => {
     const elements = document.querySelectorAll(selector)
 
@@ -22,7 +25,7 @@ export function useReveal(selector = '.reveal, .stair-line, .feat-card', deps = 
           }
         })
       },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
     )
 
     elements.forEach((el) => observer.observe(el))

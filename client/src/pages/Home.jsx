@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ShaderCanvas from '../components/ShaderCanvas'
 import ContactSection from '../components/ContactSection'
+import ScrollTypewriter from '../components/ScrollTypewriter'
 import { useReveal } from '../hooks/useReveal'
 
 // ── Portfolio data ────────────────────────────────────────────────────────────
@@ -164,7 +165,7 @@ export default function Home() {
       <section className="hero" id="home">
         <video
           ref={heroVideoRef}
-          className="hero__video"
+          className="hero__video hero-morph-right"
           autoPlay muted loop playsInline preload="auto"
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260823_050407_500d0339-ab28-41c1-9688-132a74a3b5aa.mp4"
         />
@@ -175,15 +176,18 @@ export default function Home() {
         <div className="hero__content">
           <div className="hero__headline">
             <h1>
-              <span className="stair-line" style={{ transitionDelay: '0.1s' }}>Crafting</span>
-              <span className="stair-line" style={{ transitionDelay: '0.2s' }}>Digital</span>
-              <span className="stair-line" style={{ transitionDelay: '0.3s' }}>Experience</span>
-              <span className="stair-line indent" style={{ transitionDelay: '0.45s' }}>That</span>
-              <span className="stair-line indent" style={{ transitionDelay: '0.55s' }}>Define</span>
-              <span className="stair-line indent accent" style={{ transitionDelay: '0.65s' }}>Businesses</span>
+              {/* Left half components: morph in from Left side */}
+              <span className="hero-morph-left" style={{ transitionDelay: '0.08s' }}>Crafting</span>
+              <span className="hero-morph-left" style={{ transitionDelay: '0.18s' }}>Digital</span>
+              <span className="hero-morph-left" style={{ transitionDelay: '0.28s' }}>Experience</span>
+
+              {/* Right half components: morph in from Right side */}
+              <span className="hero-morph-right indent" style={{ transitionDelay: '0.40s' }}>That</span>
+              <span className="hero-morph-right indent" style={{ transitionDelay: '0.52s' }}>Define</span>
+              <span className="hero-morph-right indent accent" style={{ transitionDelay: '0.64s' }}>Businesses</span>
             </h1>
           </div>
-          <div className="hero__cta-wrap">
+          <div className="hero__cta-wrap hero-morph-right" style={{ transitionDelay: '0.78s' }}>
             <Link to="/estimate" className="btn-chamfer">Get Your Estimate</Link>
           </div>
         </div>
@@ -196,9 +200,10 @@ export default function Home() {
             <span>About</span>
             <span className="indent">KindleWorks</span>
           </h2>
-          <p className="about__text reveal" style={{ transitionDelay: '0.15s' }}>
-            KindleWorks crafts the digital infrastructure modern businesses rely on. From custom websites to full-scale digital products, we make sure your online presence is pixel-perfect and performance-driven. Custom-built. Transparent pricing. Yours from day one.
-          </p>
+          <ScrollTypewriter
+            text="KindleWorks crafts the digital infrastructure modern businesses rely on. From custom websites to full-scale digital products, we make sure your online presence is pixel-perfect and performance-driven. Custom-built. Transparent pricing. Yours from day one."
+            className="about__text"
+          />
           <div className="about__cta reveal" style={{ transitionDelay: '0.3s' }}>
             <a href="#features" className="btn-chamfer" onClick={(e) => { e.preventDefault(); document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' }) }}>
               Learn More

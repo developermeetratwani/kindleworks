@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-const TRAIL_LIFETIME = 3000 // 3 seconds disappearance
+const TRAIL_LIFETIME = 1000 // 1 second disappearance
 const ACCENT_COLOR = '232, 93, 38' // KindleWorks brand orange (#e85d26)
 
 export default function CursorGlow() {

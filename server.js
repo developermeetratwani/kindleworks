@@ -209,11 +209,11 @@ app.post('/api/contact', async (req, res) => {
 });
 
 // ─── Serve React App ──────────────────────────────────────────────────────────
-const clientDist = path.join(__dirname, 'client', 'dist');
+const clientDist = path.join(__dirname, 'public');
 app.use(express.static(clientDist));
 
 // Fallback: serve index.html for all non-API routes (React Router)
-app.get('{*splat}', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.join(clientDist, 'index.html'));
 });
 

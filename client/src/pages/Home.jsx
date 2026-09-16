@@ -226,20 +226,22 @@ export default function Home() {
         </h2>
         <div className="portfolio__grid">
           {PROJECTS.map((p, i) => (
-            <article
+            <div
               key={p.title}
-              className="project-card reveal"
+              className="project-card-wrapper reveal"
               style={{ transitionDelay: `${0.15 + i * 0.1}s` }}
             >
-              <img src={p.img} alt={p.alt} className="project-card__img" loading="lazy" />
-              <div className="project-card__content">
-                <h3 className="project-card__title">{p.title}</h3>
-                <p className="project-card__desc">{p.desc}</p>
-                <a href={p.href} target="_blank" rel="noopener noreferrer" className="project-card__link">
-                  View Project
-                </a>
-              </div>
-            </article>
+              <article className="project-card">
+                <img src={p.img} alt={p.alt} className="project-card__img" loading="lazy" />
+                <div className="project-card__content">
+                  <h3 className="project-card__title">{p.title}</h3>
+                  <p className="project-card__desc">{p.desc}</p>
+                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="project-card__link">
+                    View Work
+                  </a>
+                </div>
+              </article>
+            </div>
           ))}
         </div>
       </section>

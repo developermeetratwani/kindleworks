@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 
 /**
  * useReveal — attaches IntersectionObserver to add 'is-visible' class

@@ -1457,8 +1457,11 @@ img {
     display: none;
   }
 
+  .hero__content {
+    justify-content: center;
+  }
+
   .hero__headline {
-    margin-top: 60px;
     padding: 0 20px;
     text-align: center;
   }

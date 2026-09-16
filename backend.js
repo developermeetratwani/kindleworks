@@ -208,14 +208,16 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// ─── Serve React App ──────────────────────────────────────────────────────────
-const clientDist = path.join(__dirname, 'public');
-app.use(express.static(clientDist));
+// ─── Serve React App (Local only) ───────────────────────────────────────────────
+if (!process.env.VERCEL) {
+  const clientDist = path.join(__dirname, 'public');
+  app.use(express.static(clientDist));
 
-// Fallback: serve index.html for all non-API routes (React Router)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(clientDist, 'index.html'));
-});
+  // Fallback: serve index.html for all non-API routes (React Router)
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(clientDist, 'index.html'));
+  });
+}
 
 // ─── Start Server ─────────────────────────────────────────────────────────────
 if (process.env.NODE_ENV !== 'production') {

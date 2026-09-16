@@ -6,7 +6,6 @@
     "postinstall": "npm install --prefix client",
     "local:start": "node backend.js",
     "dev": "node backend.js",
-    "build": "npm install --prefix client && npm run build --prefix client",
     "dev:client": "npm run dev --prefix client",
     "install:all": "npm install && npm install --prefix client"
   },

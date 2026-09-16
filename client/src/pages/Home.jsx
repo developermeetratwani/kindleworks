@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ShaderCanvas from '../components/ShaderCanvas'
+import ContactSection from '../components/ContactSection'
 import { useReveal } from '../hooks/useReveal'
 
 // ── Portfolio data ────────────────────────────────────────────────────────────
@@ -299,7 +300,7 @@ export default function Home() {
       </section>
 
       {/* ── SECTION 6 — CONTACT CTA ──────────────────────────── */}
-      <section className="contact-cta" id="contact">
+      <section className="contact-cta" id="estimate-cta">
         <ShaderCanvas col1="#e85d26" col2="#F97316" bg="#000000" opacity={1.0} isLight={false} />
         <div className="contact-cta__inner">
           <h2 className="contact-cta__heading reveal">
@@ -314,7 +315,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── SECTION 7 — CONTACT US (TABS) ──────────────────────── */}
+      <ContactSection />
+
       <Footer />
     </>
   )
 }
+

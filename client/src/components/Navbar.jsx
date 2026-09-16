@@ -35,6 +35,7 @@ export default function Navbar({ transparent = false }) {
         <button className="nav__link" onClick={() => scrollTo('work')}>Work</button>
         <button className="nav__link" onClick={() => scrollTo('features')}>Features</button>
         <button className="nav__link" onClick={() => scrollTo('pricing')}>Pricing</button>
+        <button className="nav__link" onClick={() => scrollTo('contact')}>Contact</button>
         <Link to="/estimate" className="nav__link nav__link--accent">Get Estimate</Link>
       </div>
 
@@ -75,6 +76,7 @@ export default function Navbar({ transparent = false }) {
         <button onClick={() => scrollTo('work')}>Work</button>
         <button onClick={() => scrollTo('features')}>Features</button>
         <button onClick={() => scrollTo('pricing')}>Pricing</button>
+        <button onClick={() => scrollTo('contact')}>Contact</button>
         <Link to="/estimate" onClick={() => setMenuOpen(false)}>Get Estimate</Link>
       </div>
     </nav>

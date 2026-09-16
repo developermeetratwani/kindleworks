@@ -218,6 +218,10 @@ app.get('{*splat}', (req, res) => {
 });
 
 // ─── Start Server ─────────────────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`🚀 KindleWorks server running at http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`🚀 KindleWorks server running at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;

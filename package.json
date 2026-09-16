@@ -4,6 +4,7 @@
   "description": "KindleWorks — Crafting Digital Experiences That Define Businesses",
   "main": "server.js",
   "scripts": {
+    "postinstall": "npm install --prefix client",
     "start": "node server.js",
     "dev": "node server.js",
     "build": "npm run build --prefix client",

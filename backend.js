@@ -5,6 +5,7 @@ const path = require('path');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
+const nodemailer = require('nodemailer');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -12,6 +13,30 @@ const PORT = process.env.PORT || 8080;
 // ─── Middleware ───────────────────────────────────────────────────────────────
 app.use(cors());
 app.use(express.json());
+
+// ─── Email Setup ──────────────────────────────────────────────────────────────
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
+
+const sendAdminNotification = async (subject, text) => {
+  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) return;
+  try {
+    await transporter.sendMail({
+      from: `"KindleWorks System" <${process.env.SMTP_USER}>`,
+      to: process.env.SMTP_USER, // sends to the admin's own email
+      subject,
+      text,
+    });
+    console.log(`📧 Admin notification sent: ${subject}`);
+  } catch (err) {
+    console.error('❌ Failed to send email:', err.message);
+  }
+};
 
 // ─── MongoDB ──────────────────────────────────────────────────────────────────
 const supportSchema = new mongoose.Schema({
@@ -209,6 +234,13 @@ app.post('/api/estimate', async (req, res) => {
       const doc = new Support({ type: 'estimate', name, email, projectType, timeline, budget });
       await doc.save();
       console.log(`📩 Estimate saved — ${name} <${email}>`);
+      
+      // Send email
+      await sendAdminNotification(
+        'New Estimate Request - KindleWorks',
+        `You have received a new estimate request!\n\nName: ${name}\nEmail: ${email}\nProject Type: ${projectType}\nTimeline: ${timeline}\nBudget: ${budget}`
+      );
+      
       res.json({ success: true });
     } else {
       res.status(500).json({ error: 'Database connection failed. Please try again.' });
@@ -229,6 +261,13 @@ app.post('/api/contact', async (req, res) => {
       const doc = new Support({ type: 'chat_contact', name, email, message });
       await doc.save();
       console.log(`💬 Chat contact saved — ${name} <${email}>`);
+      
+      // Send email
+      await sendAdminNotification(
+        'New Contact Message - KindleWorks ChatBot',
+        `You have received a new contact message from the ChatBot!\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`
+      );
+
       res.json({ success: true });
     } else {
       res.status(500).json({ error: 'Database connection failed.' });

@@ -227,7 +227,7 @@ if (!process.env.VERCEL) {
   app.use(express.static(clientDist));
 
   // Fallback: serve index.html for all non-API routes (React Router)
-  app.get('*', (req, res) => {
+  app.get('{*path}', (req, res) => {
     res.sendFile(path.join(clientDist, 'index.html'));
   });
 }

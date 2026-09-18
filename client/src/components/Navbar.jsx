@@ -23,9 +23,7 @@ export default function Navbar({ transparent = false }) {
 
       {/* ── Logo ──────────────────────────────────────────────────────────── */}
       <Link to="/" className="nav__logo hero-morph-left" style={{ transitionDelay: '0.04s' }} aria-label="KindleWorks Home">
-        <img src="/logo_flame.png" alt="KindleWorks Logo" style={{ height: 28, width: 'auto' }} />
-        {/* Text: visible on desktop, hidden on mobile top bar */}
-        <span className="nav__logo-text nav__logo-text--desktop">KindleWorks</span>
+        <img src="/logo_transparent.png" alt="KindleWorks Logo" style={{ height: 32, width: 'auto' }} />
       </Link>
 
       {/* ── Desktop Links (Morph in from right with stagger) ───────────────── */}
@@ -54,10 +52,9 @@ export default function Navbar({ transparent = false }) {
 
       {/* ── Mobile Dropdown Menu ──────────────────────────────────────────── */}
       <div className={`nav__mobile-menu${menuOpen ? ' is-open' : ''}`}>
-        {/* Menu header — flame + KindleWorks text */}
+        {/* Menu header — Official Logo */}
         <Link to="/" className="nav__mobile-brand" onClick={() => setMenuOpen(false)}>
-          <img src="/logo_flame.png" alt="KindleWorks Logo" style={{ height: 24, width: 'auto' }} />
-          <span className="nav__mobile-brand-text">KindleWorks</span>
+          <img src="/logo_transparent.png" alt="KindleWorks Logo" style={{ height: 32, width: 'auto' }} />
         </Link>
 
         {/* Menu links */}

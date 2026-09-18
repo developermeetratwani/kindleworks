@@ -137,6 +137,8 @@ img {
 
 .nav__logo {
   display: flex;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 9px;
   text-decoration: none;
@@ -156,6 +158,8 @@ img {
 /* Mobile brand header shown inside the open dropdown menu */
 .nav__mobile-brand {
   display: flex;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 10px;
   padding-bottom: 16px;
@@ -169,6 +173,7 @@ img {
   font-weight: 700;
   color: var(--kw-heading);
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 

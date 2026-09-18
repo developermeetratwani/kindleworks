@@ -49,9 +49,19 @@ const STATS = [
 
 // ── Tech stack data ─────────────────────────────────────────────────────────────────────────────
 const TECH_STACK = [
-  'React', 'Node.js', 'MongoDB', 'Next.js', 'Firebase',
-  'Vite', 'TypeScript', 'Vercel', 'PostgreSQL', 'Tailwind CSS',
-  'Express.js', 'Framer Motion', 'Gemini AI', 'AWS S3', 'Stripe',
+  { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
+  { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+  { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg' },
+  { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg' },
+  { name: 'Firebase', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg' },
+  { name: 'Vite', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg' },
+  { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
+  { name: 'Vercel', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg' },
+  { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
+  { name: 'Tailwind CSS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
+  { name: 'Express.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg' },
+  { name: 'Framer Motion', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framer/framer-original.svg' },
+  { name: 'AWS S3', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
 ]
 
 // ── Process steps data ────────────────────────────────────────────────────────────────────────────
@@ -286,10 +296,8 @@ export default function Home() {
           {/* Double for seamless loop */}
           {[...TECH_STACK, ...TECH_STACK].map((tech, i) => (
             <span key={i} className="tech-ticker__item">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-                <polygon points="6,0 12,12 0,12" />
-              </svg>
-              {tech}
+              <img src={tech.logo} alt={`${tech.name} logo`} style={{ height: '24px', width: 'auto', objectFit: 'contain' }} />
+              {tech.name}
             </span>
           ))}
         </div>

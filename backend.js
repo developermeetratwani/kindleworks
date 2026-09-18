@@ -27,15 +27,29 @@ const supportSchema = new mongoose.Schema({
 
 const Support = mongoose.model('kindleworks support', supportSchema);
 
-if (process.env.MONGODB_URI && process.env.MONGODB_URI !== 'YOUR_MONGODB_URI_HERE') {
-  const mongoUri = process.env.MONGODB_URI.replace(/^"|"$/g, ''); // strip quotes if any
-  mongoose
-    .connect(mongoUri)
-    .then(() => console.log('✅ MongoDB connected — collection: kindleworks support'))
-    .catch((err) => console.error('❌ MongoDB connection error:', err.message));
-} else {
-  console.warn('⚠️  MONGODB_URI not set — customer data will not be stored.');
-}
+const mongoUri = process.env.MONGODB_URI && process.env.MONGODB_URI !== 'YOUR_MONGODB_URI_HERE'
+  ? process.env.MONGODB_URI.replace(/^"|"$/g, '') 
+  : null;
+
+let isConnected = false;
+const connectDB = async () => {
+  if (isConnected) return;
+  if (!mongoUri) {
+    console.warn('⚠️ MONGODB_URI not set — database operations will fail.');
+    return;
+  }
+  try {
+    if (mongoose.connection.readyState === 1) {
+      isConnected = true;
+      return;
+    }
+    await mongoose.connect(mongoUri);
+    isConnected = true;
+    console.log('✅ MongoDB connected');
+  } catch (err) {
+    console.error('❌ MongoDB connection error:', err.message);
+  }
+};
 
 // ─── Gemini AI ────────────────────────────────────────────────────────────────
 const SYSTEM_PROMPT = `You are the official AI assistant for KindleWorks — a premium web design and digital development agency based in India.
@@ -190,14 +204,15 @@ app.post('/api/estimate', async (req, res) => {
   }
 
   try {
+    await connectDB();
     if (mongoose.connection.readyState === 1) {
       const doc = new Support({ type: 'estimate', name, email, projectType, timeline, budget });
       await doc.save();
       console.log(`📩 Estimate saved — ${name} <${email}>`);
+      res.json({ success: true });
     } else {
-      console.log(`📩 Estimate (not saved — no DB): ${name} <${email}> | ${projectType} | ${timeline} | ${budget}`);
+      res.status(500).json({ error: 'Database connection failed. Please try again.' });
     }
-    res.json({ success: true });
   } catch (err) {
     console.error('Estimate save error:', err.message);
     res.status(500).json({ error: 'Failed to save estimate. Please try again.' });
@@ -209,12 +224,15 @@ app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
   try {
+    await connectDB();
     if (mongoose.connection.readyState === 1) {
       const doc = new Support({ type: 'chat_contact', name, email, message });
       await doc.save();
       console.log(`💬 Chat contact saved — ${name} <${email}>`);
+      res.json({ success: true });
+    } else {
+      res.status(500).json({ error: 'Database connection failed.' });
     }
-    res.json({ success: true });
   } catch (err) {
     console.error('Contact save error:', err.message);
     res.status(500).json({ error: 'Failed to save contact.' });

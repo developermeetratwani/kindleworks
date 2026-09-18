@@ -55,10 +55,10 @@ export default function Navbar({ transparent = false }) {
       {/* ── Mobile Dropdown Menu ──────────────────────────────────────────── */}
       <div className={`nav__mobile-menu${menuOpen ? ' is-open' : ''}`}>
         {/* Menu header — flame + KindleWorks text */}
-        <div className="nav__mobile-brand">
+        <Link to="/" className="nav__mobile-brand" onClick={() => setMenuOpen(false)}>
           <img src="/logo_flame.png" alt="KindleWorks Logo" style={{ height: 24, width: 'auto' }} />
           <span className="nav__mobile-brand-text">KindleWorks</span>
-        </div>
+        </Link>
 
         {/* Menu links */}
         <button onClick={() => scrollTo('home')}>Home</button>

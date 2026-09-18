@@ -33,6 +33,7 @@ export default function Navbar({ transparent = false }) {
         <button className="nav__link" onClick={() => scrollTo('home')}>Home</button>
         <button className="nav__link" onClick={() => scrollTo('about')}>About</button>
         <button className="nav__link" onClick={() => scrollTo('work')}>Work</button>
+        <button className="nav__link" onClick={() => scrollTo('process')}>Process</button>
         <button className="nav__link" onClick={() => scrollTo('features')}>Features</button>
         <button className="nav__link" onClick={() => scrollTo('pricing')}>Pricing</button>
         <Link to="/estimate" className="nav__link nav__link--accent">Get Estimate</Link>
@@ -73,6 +74,7 @@ export default function Navbar({ transparent = false }) {
         <button onClick={() => scrollTo('home')}>Home</button>
         <button onClick={() => scrollTo('about')}>About</button>
         <button onClick={() => scrollTo('work')}>Work</button>
+        <button onClick={() => scrollTo('process')}>Process</button>
         <button onClick={() => scrollTo('features')}>Features</button>
         <button onClick={() => scrollTo('pricing')}>Pricing</button>
         <Link to="/estimate" onClick={() => setMenuOpen(false)}>Get Estimate</Link>

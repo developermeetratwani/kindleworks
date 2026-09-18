@@ -37,6 +37,50 @@ const PROJECTS = [
   },
 ]
 
+// ── Stats data ────────────────────────────────────────────────────────────────────────────────────
+const STATS = [
+  { number: '40+', label: 'Projects Delivered' },
+  { number: '100%', label: 'Client Code Ownership' },
+  { number: '40', label: 'Free Updates / Year' },
+  { number: '₹7.5K', label: 'Starting Price' },
+]
+
+// ── Tech stack data ─────────────────────────────────────────────────────────────────────────────
+const TECH_STACK = [
+  'React', 'Node.js', 'MongoDB', 'Next.js', 'Firebase',
+  'Vite', 'TypeScript', 'Vercel', 'PostgreSQL', 'Tailwind CSS',
+  'Express.js', 'Framer Motion', 'Gemini AI', 'AWS S3', 'Stripe',
+]
+
+// ── Process steps data ────────────────────────────────────────────────────────────────────────────
+const PROCESS_STEPS = [
+  {
+    number: '01',
+    title: 'Discovery & Brief',
+    desc: 'We deep-dive into your brand, goals, and audience to build a precise project blueprint.',
+  },
+  {
+    number: '02',
+    title: 'Design & Prototype',
+    desc: 'Custom wireframes and pixel-perfect mockups built around your brand identity.',
+  },
+  {
+    number: '03',
+    title: 'Build & Develop',
+    desc: 'Clean, scalable code crafted with modern tech. No templates, no shortcuts.',
+  },
+  {
+    number: '04',
+    title: 'Test & Launch',
+    desc: 'Rigorous cross-device QA, performance tuning, and seamless deployment to your infrastructure.',
+  },
+  {
+    number: '05',
+    title: 'Support & Grow',
+    desc: 'Up to 40 free updates in Year 1. We’re your long-term digital partner.',
+  },
+]
+
 // ── Feature cards data ────────────────────────────────────────────────────────
 const FEATURES = [
   {
@@ -167,6 +211,8 @@ export default function Home() {
           autoPlay muted loop playsInline preload="auto"
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260823_050407_500d0339-ab28-41c1-9688-132a74a3b5aa.mp4"
         />
+        {/* Orange ambient glow to override the blue light under the globe */}
+        <div className="hero__video-glow" aria-hidden="true" />
         <div className="hero__scrim" aria-hidden="true" />
 
         <Navbar transparent />
@@ -217,6 +263,32 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── SECTION 3 — STATS BANNER ─────────────────────────────── */}
+      <div className="stats-banner">
+        {STATS.map((s) => (
+          <div key={s.label} className="stats-banner__item">
+            <div className="stats-banner__number">{s.number}</div>
+            <div className="stats-banner__label">{s.label}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* ── SECTION 3b — TECH TICKER ──────────────────────────────── */}
+      <div className="tech-ticker">
+        <p className="tech-ticker__label">Technologies We Work With</p>
+        <div className="tech-ticker__track">
+          {/* Double for seamless loop */}
+          {[...TECH_STACK, ...TECH_STACK].map((tech, i) => (
+            <span key={i} className="tech-ticker__item">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                <polygon points="6,0 12,12 0,12" />
+              </svg>
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* ── SECTION 3 — PORTFOLIO ────────────────────────────── */}
       <section className="portfolio" id="work">
         <p className="portfolio__label reveal">Our Work</p>
@@ -240,6 +312,28 @@ export default function Home() {
                 </a>
               </div>
             </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ── SECTION 5 — PROCESS / ROADMAP ─────────────────────────── */}
+      <section className="process" id="process">
+        <p className="process__label reveal">How We Work</p>
+        <h2 className="process__heading reveal" style={{ transitionDelay: '0.1s' }}>
+          <span>Our</span>
+          <span className="indent">Process</span>
+        </h2>
+        <div className="process__steps">
+          {PROCESS_STEPS.map((step, i) => (
+            <div
+              key={step.number}
+              className="process-step reveal"
+              style={{ transitionDelay: `${0.1 + i * 0.12}s` }}
+            >
+              <div className="process-step__number">{step.number}</div>
+              <h3 className="process-step__title">{step.title}</h3>
+              <p className="process-step__desc">{step.desc}</p>
+            </div>
           ))}
         </div>
       </section>

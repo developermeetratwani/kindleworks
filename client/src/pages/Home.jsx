@@ -339,12 +339,12 @@ export default function Home() {
           <span>Our</span>
           <span className="indent">Process</span>
         </h2>
-        <div className="process__steps">
+        <div className="process__steps reveal">
           {PROCESS_STEPS.map((step, i) => (
             <div
               key={step.number}
               className="process-step reveal"
-              style={{ transitionDelay: `${0.1 + i * 0.12}s` }}
+              style={{ transitionDelay: `${0.12 + i * 0.16}s` }}
             >
               <div className="process-step__number">{step.number}</div>
               <h3 className="process-step__title">{step.title}</h3>

@@ -1813,15 +1813,12 @@ img {
 }
 
 .chatbot-header__logo {
-  width: 32px;
-  height: 32px;
-  background: var(--kw-accent);
-  border-radius: 8px;
   display: flex;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
   align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 14px;
+  gap: 8px;
+  background: transparent;
   color: white;
 }
 

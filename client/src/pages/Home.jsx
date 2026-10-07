@@ -5,33 +5,51 @@ import Footer from '../components/Footer'
 import ShaderCanvas from '../components/ShaderCanvas'
 import ContactSection from '../components/ContactSection'
 import ScrollTypewriter from '../components/ScrollTypewriter'
+import Seo, { SITE_URL } from '../components/Seo'
 import { useReveal } from '../hooks/useReveal'
+
+const HOME_JSON_LD = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'KindleWorks',
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo_transparent.webp`,
+    description: 'KindleWorks crafts premium digital experiences — custom websites, apps, and digital products with transparent pricing and full code ownership.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'KindleWorks',
+    url: SITE_URL,
+  },
+]
 
 // ── Portfolio data ────────────────────────────────────────────────────────────
 const PROJECTS = [
   {
-    img: '/civiclensai.jpg',
+    img: '/civiclensai.webp',
     alt: 'CivicLensAI',
     title: 'CivicLensAI',
     desc: 'An AI-powered civic platform where every civic issue is heard, classified, and resolved by artificial intelligence.',
     href: 'https://civiclensai-eight.vercel.app/',
   },
   {
-    img: '/stafroom.jpg',
+    img: '/stafroom.webp',
     alt: 'Stafroom: AI Powered Teaching Software',
     title: 'Stafroom: AI Powered Teaching Software',
     desc: 'A smart teaching workspace that remembers your classes, question banks, and students\' weak spots — one connected AI system.',
     href: 'https://stafroom.onrender.com/',
   },
   {
-    img: '/portfolio.jpg',
+    img: '/portfolio.webp',
     alt: 'Portfolio: Meet Ratwani',
     title: 'Portfolio: Meet Ratwani',
     desc: 'A sleek, dark-themed developer portfolio showcasing Full Stack Development and AI building expertise with stunning visuals.',
     href: 'https://portfoliomeetratwani250109.web.app/',
   },
   {
-    img: '/rstore.jpg',
+    img: '/rstore.webp',
     alt: 'R Store',
     title: 'R Store',
     desc: 'A vibrant, cosmic-themed mobile e-commerce store offering the best mobile deals with premium devices and unbeatable prices.',
@@ -215,6 +233,12 @@ export default function Home() {
 
   return (
     <>
+      <Seo
+        title="KindleWorks — Crafting Digital Experiences That Define Businesses"
+        description="KindleWorks builds custom websites, apps, and digital products with transparent pricing, complete code ownership, and no commissions. Get a free estimate today."
+        path="/"
+        jsonLd={HOME_JSON_LD}
+      />
       {/* ── SECTION 1 — HERO ─────────────────────────────────── */}
       <section className="hero" id="home">
         <video
@@ -318,7 +342,7 @@ export default function Home() {
               style={{ transitionDelay: `${0.15 + i * 0.1}s` }}
             >
               <article className="project-card">
-                <img src={p.img} alt={p.alt} className="project-card__img" loading="lazy" />
+                <img src={p.img} alt={p.alt} className="project-card__img" loading="lazy" width="1376" height="768" />
                 <div className="project-card__content">
                   <h3 className="project-card__title">{p.title}</h3>
                   <p className="project-card__desc">{p.desc}</p>

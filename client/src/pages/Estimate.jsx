@@ -2,7 +2,14 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import Seo from '../components/Seo'
+import Breadcrumbs, { breadcrumbSchema } from '../components/Breadcrumbs'
 import { useReveal } from '../hooks/useReveal'
+
+const BREADCRUMB_ITEMS = [
+  { label: 'Home', path: '/' },
+  { label: 'Get Estimate', path: '/estimate' },
+]
 
 const STEPS = [
   {
@@ -78,11 +85,18 @@ export default function Estimate() {
 
   return (
     <>
+      <Seo
+        title="Get a Free Estimate — KindleWorks"
+        description="Tell us about your project and get a transparent, no-obligation estimate for your website, app, or digital product from KindleWorks."
+        path="/estimate"
+        jsonLd={breadcrumbSchema(BREADCRUMB_ITEMS)}
+      />
       <div className="estimate-page">
         <Navbar />
 
         {/* Hero */}
         <div className="estimate-hero">
+          <Breadcrumbs items={BREADCRUMB_ITEMS} />
           <h1 className="estimate-hero__heading reveal">
             Let's build <br />
             <span className="accent">your vision</span>

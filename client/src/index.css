@@ -89,12 +89,17 @@ img {
    CHAMFERED BUTTON
    ═══════════════════════════════════════════════════════════ */
 .btn-chamfer {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  background: var(--kw-white);
+  background-color: #ffffff;
+  background-image: linear-gradient(to right, var(--kw-accent), var(--kw-accent));
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
   border: 1px solid var(--kw-accent-border);
-  color: var(--kw-dark);
+  color: #0b0b0b;
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -103,15 +108,37 @@ img {
   font-family: 'Quantico', sans-serif;
   cursor: pointer;
   clip-path: var(--kw-chamfer);
-  box-shadow: 0 0 0 1px var(--kw-accent-glow), 0 10px 30px -12px rgba(200, 77, 30, 0.6);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 0 1px rgba(232, 93, 38, 0.22), 0 4px 14px -4px rgba(0, 0, 0, 0.08);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
+  transform: translateY(0);
+  transition: 
+    background-size 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.32s cubic-bezier(0.25, 1, 0.5, 1),
+    color 0.28s ease,
+    border-color 0.32s ease,
+    box-shadow 0.35s ease,
+    filter 0.35s ease;
   text-decoration: none;
+  user-select: none;
 }
 
 .btn-chamfer:hover {
-  background: var(--kw-accent);
-  box-shadow: 0 0 0 2px var(--kw-accent-glow), 0 14px 40px -10px rgba(200, 77, 30, 0.7);
-  color: var(--kw-dark);
+  background-size: 100% 100%;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  border-color: var(--kw-accent);
+  box-shadow: 0 0 20px rgba(232, 93, 38, 0.5), 0 8px 24px -4px rgba(232, 93, 38, 0.45);
+  filter: drop-shadow(0 6px 16px rgba(232, 93, 38, 0.45));
+}
+
+.btn-chamfer:active {
+  transform: translateY(0px);
+}
+
+.btn-chamfer:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .btn-chamfer::after {
@@ -119,7 +146,16 @@ img {
   display: inline-block;
   width: 22px;
   height: 1px;
-  background: var(--kw-dark);
+  background: currentColor;
+  transition: background-color 0.28s ease, transform 0.3s ease;
+}
+
+.btn-chamfer:hover::after {
+  background: #ffffff;
+}
+
+.btn-chamfer svg {
+  transition: stroke 0.28s ease, fill 0.28s ease, color 0.28s ease, transform 0.3s ease;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -861,6 +897,8 @@ img {
 .process {
   padding: clamp(60px, 10vw, 140px) clamp(20px, 9vw, 118px);
   background: linear-gradient(180deg, var(--kw-bg-alt) 0%, var(--kw-bg) 100%);
+  position: relative;
+  overflow: hidden;
 }
 
 .process__label {
@@ -895,18 +933,29 @@ img {
   position: relative;
 }
 
-/* Connector line between steps */
+/* Connector line between steps — smoothly expands from left as steps reveal */
 .process__steps::before {
   content: '';
   position: absolute;
   top: 40px;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--kw-accent) 15%, rgba(232,93,38,0.3) 50%, var(--kw-accent) 85%, transparent 100%);
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--kw-accent) 15%, rgba(232,93,38,0.35) 50%, var(--kw-accent) 85%, transparent 100%);
   z-index: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  opacity: 0;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+              opacity 0.6s ease 0.1s;
 }
 
+.process__steps.is-visible::before {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* Process step cards — fall down one by one with smooth physics */
 .process-step {
   position: relative;
   z-index: 1;
@@ -916,11 +965,26 @@ img {
   align-items: flex-start;
 }
 
+.process-step.reveal {
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.85s cubic-bezier(0.34, 1.25, 0.64, 1);
+  will-change: transform, opacity;
+}
+
+.process-step.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .process-step__number {
   width: 80px;
   height: 80px;
-  background: var(--kw-white);
-  border: 2px solid rgba(0,0,0,0.08);
+  background: #ffffff;
+  border: 1px solid rgba(232, 93, 38, 0.35);
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(232, 93, 38, 0.15);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.04));
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   display: flex;
   align-items: center;
@@ -930,33 +994,18 @@ img {
   color: var(--kw-accent);
   margin-bottom: 24px;
   flex-shrink: 0;
-  transition: background 0.3s, border-color 0.3s;
   position: relative;
   z-index: 1;
-  background: var(--kw-bg-alt);
+  transition: transform 0.35s ease, background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
 }
 
 .process-step:hover .process-step__number {
+  transform: translateY(-4px);
   background: var(--kw-accent);
   border-color: var(--kw-accent);
-  color: var(--kw-white);
-}
-
-.process-step__icon {
-  position: absolute;
-  top: 80px;
-  left: 20px;
-  width: 40px;
-  height: 40px;
-  background: var(--kw-accent);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 14px;
-  opacity: 0;
-  transition: opacity 0.3s;
+  color: #ffffff;
+  box-shadow: 0 8px 24px -4px rgba(232, 93, 38, 0.5), 0 0 16px rgba(232, 93, 38, 0.4);
+  filter: drop-shadow(0 4px 12px rgba(232, 93, 38, 0.4));
 }
 
 .process-step__title {
@@ -966,6 +1015,11 @@ img {
   letter-spacing: 0.06em;
   color: var(--kw-heading);
   margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.process-step:hover .process-step__title {
+  color: var(--kw-accent);
 }
 
 .process-step__desc {
@@ -1164,9 +1218,7 @@ img {
   margin: 0 auto 40px;
 }
 
-.contact-cta .btn-chamfer {
-  color: var(--kw-dark);
-}
+
 
 /* ═══════════════════════════════════════════════════════════
    CONTACT SECTION (TABS)
@@ -1391,17 +1443,25 @@ img {
   font-size: 13px;
 }
 
+.contact-action-btn::after {
+  display: none;
+}
+
 .contact-action-btn--whatsapp {
-  background: var(--kw-white) !important;
+  background-color: #ffffff !important;
+  background-image: linear-gradient(to right, #16a34a, #16a34a) !important;
   border: 1px solid #16a34a !important;
-  color: var(--kw-dark) !important;
+  color: #0b0b0b !important;
+  box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.2), 0 4px 14px -4px rgba(0, 0, 0, 0.08) !important;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06)) !important;
 }
 
 .contact-action-btn--whatsapp:hover {
-  background: #16a34a !important;
+  background-size: 100% 100% !important;
   border-color: #15803d !important;
   color: #ffffff !important;
-  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.35), 0 14px 40px -10px rgba(22, 163, 74, 0.7) !important;
+  box-shadow: 0 0 20px rgba(22, 163, 74, 0.5), 0 8px 24px -4px rgba(22, 163, 74, 0.45) !important;
+  filter: drop-shadow(0 6px 16px rgba(22, 163, 74, 0.45)) !important;
 }
 
 .contact-copy-btn {

@@ -264,7 +264,7 @@ export default function Home() {
           ref={heroVideoRef}
           className="hero__video hero-morph-right"
           autoPlay muted loop playsInline preload="metadata"
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260823_050407_500d0339-ab28-41c1-9688-132a74a3b5aa.mp4"
+          src="/hero-orange.mp4"
         />
         {/* Orange ambient glow to override the blue light under the globe */}
         <div className="hero__video-glow" aria-hidden="true" />

@@ -222,13 +222,31 @@ function useAutoplay(ref) {
   }, [ref])
 }
 
+function useLazyVideo(ref, src) {
+  useEffect(() => {
+    const video = ref.current
+    if (!video) return
+    const io = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+      io.disconnect()
+      video.src = src
+      video.muted = true
+      video.play().catch(() => {})
+    }, { rootMargin: '300px' })
+    io.observe(video)
+    return () => io.disconnect()
+  }, [ref, src])
+}
+
+const ABOUT_VIDEO = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260823_063501_2e2c8971-de1e-473a-8611-a0c9ae7ee186.mp4'
+
 // ═════════════════════════════════════════════════════════════════════════════
 export default function Home() {
   const heroVideoRef  = useRef(null)
   const aboutVideoRef = useRef(null)
 
   useAutoplay(heroVideoRef)
-  useAutoplay(aboutVideoRef)
+  useLazyVideo(aboutVideoRef, ABOUT_VIDEO)
   useReveal()
 
   return (
@@ -239,12 +257,13 @@ export default function Home() {
         path="/"
         jsonLd={HOME_JSON_LD}
       />
+      <main>
       {/* ── SECTION 1 — HERO ─────────────────────────────────── */}
       <section className="hero" id="home">
         <video
           ref={heroVideoRef}
           className="hero__video hero-morph-right"
-          autoPlay muted loop playsInline preload="auto"
+          autoPlay muted loop playsInline preload="metadata"
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260823_050407_500d0339-ab28-41c1-9688-132a74a3b5aa.mp4"
         />
         {/* Orange ambient glow to override the blue light under the globe */}
@@ -295,8 +314,7 @@ export default function Home() {
             <video
               ref={aboutVideoRef}
               className="about__video"
-              autoPlay muted loop playsInline preload="auto"
-              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260823_063501_2e2c8971-de1e-473a-8611-a0c9ae7ee186.mp4"
+              muted loop playsInline preload="none"
             />
             <div className="about__video-overlay" aria-hidden="true" />
           </div>
@@ -320,7 +338,7 @@ export default function Home() {
           {/* Double for seamless loop */}
           {[...TECH_STACK, ...TECH_STACK].map((tech, i) => (
             <span key={i} className="tech-ticker__item">
-              <img src={tech.logo} alt={`${tech.name} logo`} style={{ height: '24px', width: 'auto', objectFit: 'contain' }} />
+              <img src={tech.logo} alt={`${tech.name} logo`} width="24" height="24" loading="lazy" decoding="async" style={{ height: '24px', width: 'auto', objectFit: 'contain' }} />
               {tech.name}
             </span>
           ))}
@@ -448,6 +466,7 @@ export default function Home() {
 
       {/* ── SECTION 7 — CONTACT US (TABS) ──────────────────────── */}
       <ContactSection />
+      </main>
 
       <Footer />
     </>
